@@ -27,6 +27,7 @@ sudo apt install htop
 sudo apt install ripgrep
 cargo install exa
 sudo apt install neofetch
+sudo apt install qdirstat
 ```
 
 
