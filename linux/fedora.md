@@ -27,6 +27,7 @@ sudo dnf install htop
 sudo dnf install ripgrep
 sudo dnf install exa
 sudo dnf install neofetch
+sudo dnf install qdirstat
 ```
 
 
