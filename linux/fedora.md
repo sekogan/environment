@@ -295,6 +295,21 @@ Settings:
 - Power
     - Automatic suspend = On, When idle, 1 hour
 
+Setup daily cleaning of unwanted files:
+
+```
+sudo vi /etc/cron.daily/clean_coredumps
+sudo chmod a+x /etc/cron.daily/clean_coredumps
+```
+
+```
+#!/bin/env bash
+
+DIR=/var/lib/systemd/coredump
+
+find $DIR/* -mtime 1 -exec rm {} \;
+```
+
 
 ## Boot Loader
 
