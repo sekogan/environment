@@ -479,8 +479,14 @@ sudo dnf install remmina
 sudo dnf install freerdp
 ```
 
-Allow freerdp to grab keyboard:
+Allow freerdp and remmina to grab keyboard in x11 mode:
 
 ```
-gsettings set org.gnome.mutter.wayland xwayland-grab-access-rules "['xfreerdp']"
+gsettings set org.gnome.mutter.wayland xwayland-grab-access-rules "['xfreerdp', 'org.remmina.Remmina']"
+```
+
+Remmina 1.4.1 doesn't grab keyboard in wayland mode. To solve this it has to be started in x11 mode:
+
+```
+GDK_BACKEND=x11 remmina
 ```
