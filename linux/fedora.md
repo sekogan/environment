@@ -18,6 +18,8 @@ Install terminator (`sudo dnf install terminator`). Then start it and go to Pref
     - font = Monospace Regular 15? (14 on desktop)
     - copy on selection -> on
 
+Run `ibus-setup`, go to Emoji and delete keyboard shortcuts.
+
 Also install:
 
 ```
