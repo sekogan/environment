@@ -503,8 +503,15 @@ Allow freerdp and remmina to grab keyboard in x11 mode:
 gsettings set org.gnome.mutter.wayland xwayland-grab-access-rules "['xfreerdp', 'org.remmina.Remmina']"
 ```
 
-Remmina 1.4.1 doesn't grab keyboard in wayland mode. To solve this it has to be started in x11 mode:
+Remmina 1.4.1 doesn't grab keyboard in wayland mode. To solve this it has to be started in x11 mode.
+Add to ~/.bashrc:
 
 ```
-GDK_BACKEND=x11 remmina
+alias remmina="GDK_BACKEND=x11 nohup remmina &>/dev/null &"
+```
+
+Also add:
+
+```
+alias rdp="nohup xfreerdp /v:kogan.avp.ru /d:avp.ru /u:Kogan +compression +fonts +window-drag /f &>/dev/null &"
 ```
