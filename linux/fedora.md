@@ -274,7 +274,7 @@ Set host name:
 sudo hostnamectl set-hostname xxx
 ```
 
-Enable TRIM:
+Enable TRIM (TODO: verify that it is enabled by default since Fedora 32):
 
 ```
 sudo systemctl enable fstrim.timer
