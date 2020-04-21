@@ -4,13 +4,23 @@
 Derived from https://github.com/ai/environment
 
 
-## Terminal
+## Basic Terminal
 
 Open Terminal -> Preferences. Set:
 
 - General/Enable the menu accelerator -> Off
 - Profiles/Unnamed/
     - Custom Font -> size = 15? (14 on desktop)
+
+
+## System update
+
+```
+sudo dnf update --refresh
+```
+
+
+## Advanced Terminal
 
 Install terminator (`sudo dnf install terminator`). Then start it and go to Preferences:
 
@@ -30,13 +40,6 @@ sudo dnf install ripgrep
 sudo dnf install exa
 sudo dnf install neofetch
 sudo dnf install qdirstat
-```
-
-
-## System update
-
-```
-sudo dnf update --refresh
 ```
 
 
@@ -336,33 +339,6 @@ Generate grub configuration:
 ```
 sudo update-grub
 ```
-
-
-## Undervolting and monitoring tools (WIP)
-
-Install lm-sensors (required by freon):
-
-```
-sudo dnf install lm-sensors
-sudo sensors-detect
-```
-
-Install [freon](https://extensions.gnome.org/extension/841/freon/).
-
-
-```
-sudo dnf install python3-pip
-pip3 install undervolt
-
-```
-
-Add ~/.local/bin to $PATH, add to ~/.profile:
-
-```
-PATH="$HOME/.local/bin:$PATH"
-```
-
-To be continued
 
 
 ## Install developer tools

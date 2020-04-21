@@ -4,7 +4,7 @@
 Derived from https://github.com/ai/environment
 
 
-## Terminal
+## Basic Terminal
 
 Open Terminal -> Preferences. Set:
 
@@ -12,11 +12,23 @@ Open Terminal -> Preferences. Set:
 - Profiles/Unnamed/
     - Custom Font -> size = 15
 
+
+## System update
+
+```
+sudo dnf update --refresh
+```
+
+
+## Advanced Terminal
+
 Install terminator (`sudo apt install terminator`). Then start it and go to Preferences:
 
 - Profiles -> default -> General:
     - font = Ubuntu Mono regular 18
     - copy on selection -> on
+
+Run `ibus-setup`, go to Emoji and delete keyboard shortcuts.
 
 Also install:
 
@@ -108,6 +120,7 @@ git config --global user.email sekogan@gmail.com
 ```
 
 Configure password store for git:
+TODO: find a package like in Fedora that installs libsecret
 
 ```
 sudo apt-get install libsecret-1-0 libsecret-1-dev
@@ -449,3 +462,32 @@ Run Chrome (doesn't work in Chromium right now). Go to Settings -> Search settin
 Open https://cvpn.kaspersky.com/ and try to login (press Logon button if it fails). Should ask for password and show AnyConnect Secure Mobility Client UI.
 
 Open MS Teams. Should login and allow to do video/audio calls.
+
+
+## Remote desktop clients
+
+TODO: this part is not verified
+
+```
+sudo apt install remmina
+sudo apt install freerdp
+```
+
+Allow freerdp and remmina to grab keyboard in x11 mode:
+
+```
+gsettings set org.gnome.mutter.wayland xwayland-grab-access-rules "['xfreerdp', 'org.remmina.Remmina']"
+```
+
+Remmina 1.4.1 doesn't grab keyboard in wayland mode. To solve this it has to be started in x11 mode.
+Add to ~/.bashrc:
+
+```
+alias remmina="GDK_BACKEND=x11 nohup remmina &>/dev/null &"
+```
+
+Also add:
+
+```
+alias rdp="nohup xfreerdp /v:kogan.avp.ru /d:avp.ru /u:Kogan +compression +fonts +window-drag /f &>/dev/null &"
+```
