@@ -299,6 +299,7 @@ pip3 install undervolt
 
 ```
 
+TODO: check that .local/bin is not added to PATH in .bashrc
 Add ~/.local/bin to $PATH, add to ~/.profile:
 
 ```
