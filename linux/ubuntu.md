@@ -19,7 +19,8 @@ Open Terminal -> Preferences. Set:
 ## System update
 
 ```
-sudo dnf update --refresh
+sudo apt update
+sudo apt upgrade
 ```
 
 
@@ -39,6 +40,7 @@ Also install:
 sudo apt install vim
 sudo apt install mc
 sudo apt install htop
+sudo apt install iotop
 sudo apt install ripgrep
 cargo install exa
 sudo apt install neofetch
@@ -50,23 +52,28 @@ sudo apt install qdirstat
 
 Open settings:
 
-- Dock -> Auto-hide the Dock = on
-- Region & Language -> Input sources -> Add Russian
+- Appearance
+    - Window colors = Dark
+    - Auto-hide the Dock = true
+- Privacy
+    - File History & Trash
+        - Automatically Delete Trash Content = true
+        - Automatically Delete Temporary Files = true
+    - Screen Lock
+        - Show Notifications = false
 - Power -> Power Button Action = Suspend
-- Devices -> Displays -> Night Light -> 23:00 - 06:00.
-- Devices -> Keyboard Shortcuts
+- Displays -> Night Light -> 23:00 - 06:00.
+- Mouse & Touchpad -> Touchpad Speed = 75%
+- Keyboard Shortcuts
     - Settings = Super + I
     - Hide all normal windows = Super + D
+    - Home Folder = Super + E
     - Unset "Launch terminal"
     - Add
         - Launch terminator
         - terminator
         - Ctrl+Alt+T
-    - Add
-        - Files
-        - nautilus
-        - Super + E
-- Mouse & Touchpad -> Touchpad Speed = 75%
+- Region & Language -> Input sources -> Add Russian
 
 Install Gnome Tweaks (in Software).
 
@@ -79,10 +86,6 @@ Install Gnome Tweaks (in Software).
 - Window Titlebars
     - Minimize = false
     - Maximize = false
-
-Open Preferences in file manager:
-
-- Sort folder before files = true
 
 
 ## Basic Visual Studio Code
@@ -99,10 +102,6 @@ Open Preferences in Firefox:
 - General
     - Restore previous session = true
     - Default zoom = 120% (on HiDPI screen only)
-- Home
-    - Homepage and new windows = Firefox Home (Default)
-- Search
-    - Default search engine = Google
 - Privacy & Security
     - Ask to save logins and passwords = false
 
@@ -123,10 +122,9 @@ git config --global user.email sekogan@gmail.com
 ```
 
 Configure password store for git:
-TODO: find a package like in Fedora that installs libsecret
 
 ```
-sudo apt-get install libsecret-1-0 libsecret-1-dev
+sudo apt-get install libsecret-1-0 libsecret-1-dev make gcc
 cd /usr/share/doc/git/contrib/credential/libsecret
 sudo make
 git config --global credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
@@ -144,6 +142,8 @@ Create a new PAT on GitHub (Avatar -> Settings -> Developer settings -> Personal
 mkdir ~/projects
 cd ~/projects
 git clone https://github.com/sekogan/environment.git
+cd environment
+git push
 user: sekogan
 password: PAT (use special button in Github UI to copy)
 ```
@@ -151,9 +151,7 @@ password: PAT (use special button in Github UI to copy)
 Test that git doesn't ask password anymore:
 
 ```
-cd notes
-git pull
-git pull
+git push
 ```
 
 
