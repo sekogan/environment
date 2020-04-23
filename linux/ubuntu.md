@@ -10,7 +10,10 @@ Open Terminal -> Preferences. Set:
 
 - General/Enable the menu accelerator -> Off
 - Profiles/Unnamed/
-    - Custom Font -> size = 15
+    - Text
+        - Custom Font -> size = 15
+    - Colors
+        - Use transparent background = 15%
 
 
 ## System update
