@@ -197,11 +197,14 @@ Install in Software:
 ```
 sudo apt install net-tools
 sudo apt install curl
-sudo apt install telegram
+sudo apt install telegram-desktop
 sudo apt install vlc
 ```
 
-Open telegram, enable Night mode.
+Open telegram, enable Night mode. Go to Settings -> Advanced:
+- Launch Telegram = true
+- Launch minimized = true
+
 Add telegram to GNOME tweaks -> Startup Applications.
 
 Open VLC, go to Preferences:
@@ -212,6 +215,8 @@ Open VLC, go to Preferences:
 - Hotkeys:
     - Short backward jump = Left
     - Short forward jump = Right
+    - Cycle subtitle track = s
+    - Cycle audio track = a
 
 
 ## Advanced Gnome
