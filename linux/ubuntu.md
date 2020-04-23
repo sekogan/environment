@@ -63,7 +63,10 @@ Open settings:
         - Automatically Delete Temporary Files = true
     - Screen Lock
         - Show Notifications = false
-- Power -> Power Button Action = Suspend
+- Power
+    - Automatic suspend = On
+        - Plugged In = On
+    - Power Button Action = Suspend
 - Displays -> Night Light -> 23:00 - 06:00.
 - Mouse & Touchpad -> Touchpad Speed = 75%
 - Keyboard Shortcuts
@@ -273,11 +276,6 @@ vm.swappiness=1
 
 Reboot and check with `cat /proc/sys/vm/swappiness`.
 
-Settings:
-
-- Power
-    - Automatic suspend = On, When idle, 1 hour
-
 
 ## Boot Loader
 
@@ -357,7 +355,7 @@ Start and configure flameshot:
 
 Configure keyboard shortcuts:
 
-- Go to Gnome Settings -> Devices -> Keyboard Shortcuts.
+- Go to Settings -> Keyboard Shortcuts.
 - Remove Ctrl + Print shortcut.
 - Add new shortcut:
     - Name: Make screenshot with flameshot
@@ -367,14 +365,12 @@ Configure keyboard shortcuts:
 Install peek:
 
 ```
-sudo add-apt-repository ppa:peek-developers/stable
-sudo apt update
 sudo apt install peek
 ```
 
 Start peek, go to Preferences and enable "Open file manager after saving".
 
-- Go to Gnome Settings -> Devices -> Keyboard Shortcuts.
+- Go to Settings -> Keyboard Shortcuts.
 - Remove Ctrl + Shift + Print shortcut.
 - Add new shortcut:
     - Name: Record screen with peek
@@ -389,16 +385,17 @@ NOTE: Try to install nss-tools first. It greatly simplified the installation on 
 Install eToken driver:
 
 ```
+sudo apt install libnss3-tools
 sudo apt install gnutls-bin libengine-pkcs11-openssl opensc
 sudo dpkg -i ~/Yandex.Disk/dist/ubuntu/vpn/safenet/safenetauthenticationclient_10.7.77_amd64.deb
 sudo mkdir -p /etc/pkcs11/modules/
-sudo echo "module: /usr/lib/libeTPkcs11.so" > /etc/pkcs11/modules/eToken.module
+echo "module: /usr/lib/libeTPkcs11.so" |sudo tee /etc/pkcs11/modules/eToken.module >/dev/null
 ```
 
 Install CA certificates:
 
 ```
-cp ~/projects/environment/ca/* /usr/local/share/ca-certificates/
+sudo cp ~/projects/environment/ca/* /usr/local/share/ca-certificates/
 sudo update-ca-certificates
 ```
 
@@ -407,8 +404,18 @@ Install openconnect:
 ```
 sudo apt install openconnect
 ```
+Try to connect to VPN manually. Find certificate URL:
 
-Try to connect to VPN manually:
+```
+# p11tool --list-token-urls
+pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan
+
+# p11tool --list-all-certs "pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan"
+    ...
+    URL: pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan;id=%18%C0%E3%0B%93%C3%A5%19;object=le-SpecialSmartcardUserwithioutEn-22619;type=cert
+```
+
+Use it to connect:
 
 ```
 sudo openconnect --no-proxy --certificate 'pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan;id=%18%C0%E3%0B%93%C3%A5%19;object=le-SpecialSmartcardUserwithioutEn-22619;type=cert' --script /usr/share/vpnc-scripts/vpnc-script https://cvpn.kaspersky.com
@@ -430,22 +437,16 @@ VPN connection should now be visible in Settings -> Network.
 
 ## eToken in Firefox
 
-- Install CA certificates. Open Firefix and go to Preferences -> Privacy & Security -> Security -> Certificates -> View Certificates -> Authorities -> Import. Import certs from ../ca.
+Install CA certificates. Open Firefix and go to Preferences -> Privacy & Security -> Security -> Certificates -> View Certificates -> Authorities -> Import. Import certs from ~/project/environment/ca.
 
-Open https://cvpn.kaspersky.com/. It should be opened without certificate validation errors.
+Open Preferences -> Privacy & Security -> Security -> Certificates -> Security Devices. Press "Load" and enter "SafeNet eToken" and `/usr/lib/libeTPkcs11.so`.
 
-Open Preferences -> Privacy & Security -> Security -> Certificates -> Security Devices. Press "Load" and select `/usr/lib/libeTPkcs11.so`.
-
-Restart the browser.
-
-Open https://cvpn.kaspersky.com/ and try to login (press Logon button if it fails). Should ask for password and show AnyConnect Secure Mobility Client UI.
+Open https://cvpn.kaspersky.com/ and try to login. Should be opened without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
 
 
 ## eToken in Chrome
 
-Install Chrome.
-
-Install CA certificates. Open Chrome and go to Settings -> Search settings -> type cert -> Manage certificates -> Authorities -> Import. Import certs from ../ca.
+Install CA certificates. Open Chrome and go to Settings -> Search settings -> type cert -> Manage certificates -> Authorities -> Import. Import certs from ~/project/environment/ca.
 
 Open https://cvpn.kaspersky.com/. It should be opened without certificate validation errors.
 
@@ -453,7 +454,7 @@ Add token module to ~/.pki/nssdb (close all running browsers first):
 
 ```
 sudo apt install libnss3-tools
-modutil -dbdir sql:.pki/nssdb/ -add "eToken" -libfile /usr/lib/libeTPkcs11.so
+modutil -dbdir sql:~/.pki/nssdb/ -add "eToken" -libfile /usr/lib/libeTPkcs11.so
 ```
 
 Check everything is OK:
@@ -467,37 +468,13 @@ certutil -U -d sql:.pki/nssdb/
 certutil -L -d sql:.pki/nssdb/ -h all
 ```
 
-Run Chrome (doesn't work in Chromium right now). Go to Settings -> Search settings -> type cert -> Manage certificates -> Your certificates. Should ask for password and show token certificates.
-
-Open https://cvpn.kaspersky.com/ and try to login (press Logon button if it fails). Should ask for password and show AnyConnect Secure Mobility Client UI.
+Open https://cvpn.kaspersky.com/ and try to login. Should be opened without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
 
 Open MS Teams. Should login and allow to do video/audio calls.
 
 
 ## Remote desktop clients
 
-TODO: this part is not verified
-
 ```
 sudo apt install remmina
-sudo apt install freerdp
-```
-
-Allow freerdp and remmina to grab keyboard in x11 mode:
-
-```
-gsettings set org.gnome.mutter.wayland xwayland-grab-access-rules "['xfreerdp', 'org.remmina.Remmina']"
-```
-
-Remmina 1.4.1 doesn't grab keyboard in wayland mode. To solve this it has to be started in x11 mode.
-Add to ~/.bashrc:
-
-```
-alias remmina="GDK_BACKEND=x11 nohup remmina &>/dev/null &"
-```
-
-Also add:
-
-```
-alias rdp="nohup xfreerdp /v:kogan.avp.ru /d:avp.ru /u:Kogan +compression +fonts +window-drag /f &>/dev/null &"
 ```
