@@ -3,6 +3,8 @@
 
 Derived from https://github.com/ai/environment
 
+Last tested on Ubuntu 20.04.
+
 
 ## Basic Terminal
 
@@ -26,7 +28,7 @@ sudo apt upgrade
 
 ## Advanced Terminal
 
-Install terminator (`sudo apt install terminator`). Then start it and go to Preferences:
+Optionally install terminator (`sudo apt install terminator`). Then start it and go to Preferences:
 
 - Profiles -> default -> General:
     - font = Ubuntu Mono regular 18
@@ -177,6 +179,8 @@ Install KeePassXC. Open ~/Yandex.Disk/Documents/kogan_secrets_v5.kdbx.
 
 
 ## Package managers
+
+Optionally install flatpak.
 
 ```
 sudo apt install flatpak
