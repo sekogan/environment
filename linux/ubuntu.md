@@ -232,6 +232,12 @@ Open settings:
 
 - Online accounts -> Add Google
 
+Install Clocks
+
+```
+sudo apt-get install gnome-clocks
+```
+
 Remove `Ctrl+Alt+Up` and `Ctrl+Alt+Down` shortcuts:
 
 ```
@@ -261,7 +267,6 @@ Install extensions:
 
 Remove unwanted applications from Dock.
 
-
 ## System
 
 Reduce swap usage:
@@ -282,14 +287,12 @@ Reboot and check with `cat /proc/sys/vm/swappiness`.
 Setup grub:
 
 ```
-sudo grub-set-default 0
 sudo vi /etc/default/grub
 ```
 
 Set grub parameters:
 
 ```
-GRUB_DEFAULT=saved
 GRUB_TIMEOUT_STYLE=menu
 GRUB_TIMEOUT=3
 GRUB_GFXMODE=1024x768
@@ -302,7 +305,7 @@ sudo update-grub
 ```
 
 
-## Undervolting and monitoring tools (WIP)
+## Undervolting, fan control and monitoring tools
 
 Install lm-sensors (required by freon):
 
@@ -316,18 +319,97 @@ Install [freon](https://extensions.gnome.org/extension/841/freon/).
 
 ```
 sudo apt install python3-pip
-pip3 install undervolt
-
+sudo pip3 install undervolt
 ```
 
-TODO: check that .local/bin is not added to PATH in .bashrc
-Add ~/.local/bin to $PATH, add to ~/.profile:
+Create file:
 
 ```
-PATH="$HOME/.local/bin:$PATH"
+sudo vi /etc/systemd/system/undervolt.service
 ```
 
-To be continued
+```
+[Unit]
+Description=undervolt
+After=suspend.target
+After=hibernate.target
+After=hybrid-sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/undervolt -v --gpu -120 --core -120 --cache -120 --uncore -120 --analogio -120 -t 95
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=suspend.target
+WantedBy=hibernate.target
+WantedBy=hybrid-sleep.target
+```
+
+Check that the script works and enable service:
+
+```
+sudo systemctl start undervolt
+sudo systemctl enable undervolt
+```
+
+Install GPU monitoring tools:
+
+```
+sudo apt install nvtop
+sudo apt install intel-gpu-tools
+```
+
+Disable fan controller in BIOS (Dell laptops only):
+
+```
+cd ~/projects
+git clone https://github.com/TomFreudenberg/dell-bios-fan-control.git
+cd dell-bios-fan-control
+make
+sudo ./dell-bios-fan-control 1
+sudo ./dell-bios-fan-control 0
+sudo cp dell-bios-fan-control /usr/local/bin
+```
+
+Create file:
+
+```
+sudo vi /etc/systemd/system/bios_fan_control.service
+```
+
+```
+[Unit]
+Description=undervolt
+After=suspend.target
+After=hibernate.target
+After=hybrid-sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/dell-bios-fan-control 0
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=suspend.target
+WantedBy=hibernate.target
+WantedBy=hybrid-sleep.target
+```
+
+Check that the script works and enable service:
+
+```
+sudo systemctl start bios_fan_control
+sudo systemctl enable bios_fan_control
+```
+
+Install and start i8k fan control:
+
+```
+sudo apt install i8kutils
+sudo systemctl enable i8kmon
+sudo systemctl start i8kmon
+```
 
 
 ## Install developer tools
