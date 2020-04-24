@@ -388,6 +388,7 @@ After=hybrid-sleep.target
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/dell-bios-fan-control 0
+ExecStop=/usr/local/bin/dell-bios-fan-control 1
 
 [Install]
 WantedBy=multi-user.target
@@ -403,10 +404,21 @@ sudo systemctl start bios_fan_control
 sudo systemctl enable bios_fan_control
 ```
 
-Install and start i8k fan control:
+Install and start i8k fan control (Dell laptops only):
 
 ```
 sudo apt install i8kutils
+sudo vi /etc/i8kmon.conf
+```
+
+```
+set config(0)   {{0 0}  -1  55  -1  55}
+set config(1)   {{0 1}  50  60  50  60}
+set config(2)   {{1 1}  55  70  55  70}
+set config(3)   {{2 2}  65 128  65 128}
+```
+
+```
 sudo systemctl enable i8kmon
 sudo systemctl start i8kmon
 ```
