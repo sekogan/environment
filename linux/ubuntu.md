@@ -265,13 +265,17 @@ Install extensions:
 
 - [remove-audio-device-selection-dialog](https://extensions.gnome.org/extension/1482/remove-audio-device-selection-dialog/)
 - [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
-- [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/) (removes dropdown arrows from the top bar)
 - [autohide-battery](https://extensions.gnome.org/extension/595/autohide-battery/) (removes battery icon when on AC power)
 - [transparent-top-bar](https://extensions.gnome.org/extension/1708/transparent-top-bar/) (makes the top bar transparent if there are no windows near it)
 - [icon-hider](https://extensions.gnome.org/extension/351/icon-hider/) (removes any item from the top bar including its own icon)
 - [bing-wallpaper-changer](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
 - [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
 - [block-caribou](https://extensions.gnome.org/extension/1326/block-caribou/) (blocks on-screen keyboard)
+- [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
+- [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
+- [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
+- [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
+- [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
 
 Remove unwanted applications from Dock.
 
@@ -433,7 +437,7 @@ sudo apt install i8kutils
 Edit configuration file:
 
 ```
-sudo vi /etc/i8kmon.conf
+sudo vi /etc/i8kmon.confi8kmon
 ```
 
 ```
@@ -534,6 +538,9 @@ Install CA certificates:
 ```
 sudo cp ~/projects/environment/ca/* /usr/local/share/ca-certificates/
 sudo update-ca-certificates
+
+
+for file in ~/projects/environment/ca/* ; do certutil -d sql:$HOME/.pki/nssdb/ -A -t "C,C,C" -n "$(basename -- "$file")" -i "$file" ; done
 ```
 
 Install openconnect:
@@ -587,22 +594,22 @@ Install CA certificates. Open Chrome and go to Settings -> Search settings -> ty
 
 Open https://cvpn.kaspersky.com/. It should be opened without certificate validation errors.
 
-Add token module to ~/.pki/nssdb (close all running browsers first):
+Add token module to $HOME/.pki/nssdb (close all running browsers first):
 
 ```
 sudo apt install libnss3-tools
-modutil -dbdir sql:~/.pki/nssdb/ -add "eToken" -libfile /usr/lib/libeTPkcs11.so
+modutil -dbdir sql:$HOME/.pki/nssdb/ -add "eToken" -libfile /usr/lib/libeTPkcs11.so
 ```
 
 Check everything is OK:
 
 ```
 # List tokens. Should show eToken.
-modutil -dbdir sql:.pki/nssdb/ -list
+modutil -dbdir sql:$HOME/.pki/nssdb/ -list
 # List tokens. Should show eToken.
-certutil -U -d sql:.pki/nssdb/
+certutil -U -d sql:$HOME/.pki/nssdb/
 # List certificates. Should ask for password and print CA and personal certificates
-certutil -L -d sql:.pki/nssdb/ -h all
+certutil -L -d sql:$HOME/.pki/nssdb/ -h all
 ```
 
 Open https://cvpn.kaspersky.com/ and try to login. Should be opened without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
