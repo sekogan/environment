@@ -521,6 +521,35 @@ Start peek, go to Preferences and enable "Open file manager after saving".
     - Shortcut: Ctrl + Shift + Print
 
 
+## CA certificates
+
+Install CA certificates to the system storage:
+
+```
+sudo cp ~/projects/environment/ca/* /usr/local/share/ca-certificates/
+sudo update-ca-certificates
+```
+
+Install CA certificates to the shared NSS database.
+
+NOTE: applications from snaps or flatpaks don't have access to the shared NSS database.
+Firefox doesn't use shared database either, it has its own database.
+
+Open Chrome. Verify it has created `~/.pki/nssdb`. Close Chrome.
+
+Add CA certificates to the database:
+
+```
+for file in ~/projects/environment/ca/* ; do certutil -d sql:$HOME/.pki/nssdb/ -A -t "CT,," -n "$(basename -- "$file")" -i "$file" ; done
+```
+
+Verify they were added using
+
+```
+certutil -d sql:$HOME/.pki/nssdb -L
+```
+
+
 ## VPN
 
 Install eToken driver:
@@ -531,16 +560,6 @@ sudo apt install gnutls-bin libengine-pkcs11-openssl opensc
 sudo dpkg -i ~/Yandex.Disk/dist/ubuntu/vpn/safenet/safenetauthenticationclient_10.7.77_amd64.deb
 sudo mkdir -p /etc/pkcs11/modules/
 echo "module: /usr/lib/libeTPkcs11.so" |sudo tee /etc/pkcs11/modules/eToken.module >/dev/null
-```
-
-Install CA certificates:
-
-```
-sudo cp ~/projects/environment/ca/* /usr/local/share/ca-certificates/
-sudo update-ca-certificates
-
-
-for file in ~/projects/environment/ca/* ; do certutil -d sql:$HOME/.pki/nssdb/ -A -t "C,C,C" -n "$(basename -- "$file")" -i "$file" ; done
 ```
 
 Install openconnect:
@@ -590,14 +609,11 @@ Open https://cvpn.kaspersky.com/ and try to login. Should be opened without cert
 
 ## eToken in Chrome
 
-Install CA certificates. Open Chrome and go to Settings -> Search settings -> type cert -> Manage certificates -> Authorities -> Import. Import certs from ~/project/environment/ca.
-
 Open https://cvpn.kaspersky.com/. It should be opened without certificate validation errors.
 
 Add token module to $HOME/.pki/nssdb (close all running browsers first):
 
 ```
-sudo apt install libnss3-tools
 modutil -dbdir sql:$HOME/.pki/nssdb/ -add "eToken" -libfile /usr/lib/libeTPkcs11.so
 ```
 
