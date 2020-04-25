@@ -111,6 +111,16 @@ Open Preferences in Firefox:
     - Ask to save logins and passwords = false
 
 
+# Chrome
+
+Open Settings:
+
+- Passwords
+    - Offer to safe = off
+- Appearance
+    - Page zoom = 125%
+
+
 ## Git
 
 Install git:
