@@ -10,10 +10,11 @@ Last tested on Ubuntu 20.04.
 
 Open Terminal -> Preferences. Set:
 
-- General/Enable the menu accelerator -> Off
-- Profiles/Unnamed/
+- General
+    - Enable the menu accelerator = off
+- Profiles -> Unnamed
     - Text
-        - Custom Font -> size = 15
+        - Custom Font -> size = 15 (14 on desktop)
     - Colors
         - Use transparent background = 15%
 
@@ -32,7 +33,7 @@ Optionally install terminator (`sudo apt install terminator`). Then start it and
 
 - Profiles -> default -> General:
     - font = Ubuntu Mono regular 18
-    - copy on selection -> on
+    - copy on selection = on
 
 Run `ibus-setup`, go to Emoji and delete keyboard shortcuts.
 
@@ -42,9 +43,6 @@ Also install:
 sudo apt install vim
 sudo apt install mc
 sudo apt install ripgrep
-cargo install exa
-sudo apt install neofetch
-sudo apt install qdirstat
 ```
 
 
@@ -62,9 +60,9 @@ Open settings:
     - Screen Lock
         - Show Notifications = false
 - Power
-    - Automatic suspend = On
-        - Plugged In = On
-    - Power Button Action = Suspend
+    - Automatic suspend = on
+        - Plugged In = on
+    - Power Button Action = suspend
 - Displays -> Night Light -> 23:00 - 06:00.
 - Mouse & Touchpad -> Touchpad Speed = 75%
 - Keyboard Shortcuts
@@ -72,8 +70,8 @@ Open settings:
     - Hide all normal windows = Super + D
     - Home Folder = Super + E
     - Unset "Launch terminal"
-    - Add
-        - Launch terminator
+    - Optionally add
+        - Launch terminal
         - terminator
         - Ctrl+Alt+T
 - Region & Language -> Input sources -> Add Russian
@@ -81,7 +79,7 @@ Open settings:
 Install Gnome Tweaks (in Software).
 
 - Appearance -> Themes -> Applications -> Adwaita-dark
-- Extensions -> Desktop icons -> Remove all
+- Extensions -> Desktop icons -> Remove all icons
 - Keyboard & Mouse -> Additional Layout Options -> Switching to another layout -> Caps Lock
 - Top Bar
     - Date = false
@@ -116,7 +114,7 @@ Open Settings:
 - Passwords
     - Offer to safe = off
 - Appearance
-    - Page zoom = 125%
+    - Page zoom = 125% (on HiDPI screen only)
 
 
 ## Git
@@ -207,7 +205,6 @@ Install in Software:
 
 - gimp
 - transmission
-- chrome
 
 ```
 sudo apt install net-tools
@@ -216,11 +213,9 @@ sudo apt install telegram-desktop
 sudo apt install vlc
 ```
 
-Open telegram, enable Night mode. Go to Settings -> Advanced:
+Open telegram, enable Night mode. Then go to Settings -> Advanced:
 - Launch Telegram = true
 - Launch minimized = true
-
-Add telegram to GNOME tweaks -> Startup Applications.
 
 Open VLC, go to Preferences:
 
@@ -236,15 +231,20 @@ Open VLC, go to Preferences:
 
 ## Advanced Gnome
 
-Open settings:
-
-- Online accounts -> Add Google
-
 Install Clocks
 
 ```
 sudo apt-get install gnome-clocks
 ```
+
+
+Add world clocks (Yekaterinburg, UTC, Houston).
+
+Install Weather and select Moscow.
+
+Open settings:
+
+- Online accounts -> Add Google
 
 Remove `Ctrl+Alt+Up` and `Ctrl+Alt+Down` shortcuts:
 
@@ -274,6 +274,7 @@ Install extensions:
 - [block-caribou](https://extensions.gnome.org/extension/1326/block-caribou/) (blocks on-screen keyboard)
 
 Remove unwanted applications from Dock.
+
 
 ## System
 
@@ -318,6 +319,8 @@ sudo update-grub
 sudo apt install htop
 sudo apt install iotop
 sudo apt install sysstat
+sudo apt install neofetch
+sudo apt install qdirstat
 ```
 
 Install lm-sensors (required by freon):
@@ -474,7 +477,7 @@ sudo apt install nodejs npm yarn
 ```
 
 
-## Productivity tools
+## Screen grabbers
 
 Install flameshot:
 
@@ -515,8 +518,6 @@ Start peek, go to Preferences and enable "Open file manager after saving".
 
 
 ## VPN
-
-NOTE: Try to install nss-tools first. It greatly simplified the installation on Fedora.
 
 Install eToken driver:
 

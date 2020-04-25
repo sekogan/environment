@@ -3,14 +3,20 @@
 
 Derived from https://github.com/ai/environment
 
+Last tested on Fedora 32 beta.
+
 
 ## Basic Terminal
 
 Open Terminal -> Preferences. Set:
 
-- General/Enable the menu accelerator -> Off
-- Profiles/Unnamed/
-    - Custom Font -> size = 15? (14 on desktop)
+- General
+    - Enable the menu accelerator = off
+- Profiles -> Unnamed
+    - Text
+        - Custom Font -> size = 15 (14 on desktop)
+    - Colors
+        - Use transparent background = 15%
 
 
 ## System update
@@ -22,11 +28,11 @@ sudo dnf update --refresh
 
 ## Advanced Terminal
 
-Install terminator (`sudo dnf install terminator`). Then start it and go to Preferences:
+Optionally install terminator (`sudo dnf install terminator`). Then start it and go to Preferences:
 
 - Profiles -> default -> General:
-    - font = Monospace Regular 15? (14 on desktop)
-    - copy on selection -> on
+    - font = Monospace Regular 15 (14 on desktop)
+    - copy on selection = on
 
 Run `ibus-setup`, go to Emoji and delete keyboard shortcuts.
 
@@ -35,11 +41,7 @@ Also install:
 ```
 sudo dnf install vim
 sudo dnf install mc
-sudo dnf install htop
 sudo dnf install ripgrep
-sudo dnf install exa
-sudo dnf install neofetch
-sudo dnf install qdirstat
 ```
 
 
@@ -47,23 +49,29 @@ sudo dnf install qdirstat
 
 Open settings:
 
-- Region & Language -> Input sources -> Add Russian
-- Power -> Power Button Action = Suspend
+- Privacy
+    - File History & Trash
+        - Automatically Delete Trash Content = true
+        - Automatically Delete Temporary Files = true
+    - Screen Lock
+        - Show Notifications = false
+- Power
+    - Automatic suspend = on
+        - Plugged In = on
+    - Power Button Action = suspend
 - Displays -> Night Light -> 23:00 - 06:00.
+- Mouse & Touchpad -> Touchpad Speed = 75%
 - Keyboard Shortcuts
     - Settings = Super + I
     - Hide all normal windows = Super + D
+    - Home Folder = Super + E
     - Switch windows = Alt + Tab
     - Switch applications = Super + Tab
     - Add
-        - Launch terminator
-        - terminator
+        - Launch terminal
+        - gnome-terminal (or terminator)
         - Ctrl+Alt+T
-    - Add
-        - Files
-        - nautilus
-        - Super + E
-- Mouse & Touchpad -> Touchpad Speed = 75%
+- Region & Language -> Input sources -> Add Russian
 
 Install Gnome Tweaks (in Software).
 
@@ -72,8 +80,6 @@ Install Gnome Tweaks (in Software).
 - Top Bar
     - Date = false
     - Week numbers = true
-
-Click on clock and add world clocks (Yekaterinburg, UTC, San Francisco).
 
 Open Preferences in file manager:
 
@@ -100,6 +106,24 @@ Open Preferences in Firefox:
     - Default search engine = Google
 - Privacy & Security
     - Ask to save logins and passwords = false
+
+
+# Chrome
+
+Install Chrome:
+
+```
+sudo dnf install fedora-workstation-repositories
+sudo dnf config-manager --set-enabled google-chrome
+sudo dnf install google-chrome-stable
+```
+
+Open Settings:
+
+- Passwords
+    - Offer to safe = off
+- Appearance
+    - Page zoom = 125% (on HiDPI screen only)
 
 
 ## Git
@@ -136,6 +160,8 @@ Create a new PAT on GitHub (Avatar -> Settings -> Developer settings -> Personal
 mkdir ~/projects
 cd ~/projects
 git clone https://github.com/sekogan/environment.git
+cd environment
+git push
 user: sekogan
 password: PAT (use special button in Github UI to copy)
 ```
@@ -143,9 +169,7 @@ password: PAT (use special button in Github UI to copy)
 Test that git doesn't ask password anymore:
 
 ```
-cd notes
-git pull
-git pull
+git push
 ```
 
 
@@ -172,13 +196,13 @@ Install KeePassXC. Open ~/Yandex.Disk/Documents/kogan_secrets_v5.kdbx.
 
 ## Package managers
 
-Add RPM Fusion:
+Optionally add RPM Fusion:
 
 ```
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 ```
 
-Add flathub:
+Optionally add flathub:
 
 ```
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -206,8 +230,9 @@ sudo dnf install telegram-desktop
 sudo dnf install vlc
 ```
 
-Open telegram, enable Night mode.
-Add telegram to GNOME tweaks -> Startup Applications.
+Open telegram, enable Night mode. Then go to Settings -> Advanced:
+- Launch Telegram = true
+- Launch minimized = true
 
 Open VLC, go to Preferences:
 
@@ -217,6 +242,8 @@ Open VLC, go to Preferences:
 - Hotkeys:
     - Short backward jump = Left
     - Short forward jump = Right
+    - Cycle subtitle track = s
+    - Cycle audio track = a
 
 Install Microsoft fonts:
 
@@ -224,16 +251,13 @@ Install Microsoft fonts:
 sudo dnf install https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 ```
 
-Install Chrome:
-
-```
-sudo dnf install fedora-workstation-repositories
-sudo dnf config-manager --set-enabled google-chrome
-sudo dnf install google-chrome-stable
-```
 
 
 ## Advanced Gnome
+
+Run Clocks and add world clocks (Yekaterinburg, UTC, Houston).
+
+Run Weather and select Moscow.
 
 Open settings:
 
@@ -328,7 +352,6 @@ sudo vi /etc/default/grub
 Set grub parameters:
 
 ```
-GRUB_DEFAULT=saved
 GRUB_TIMEOUT_STYLE=menu
 GRUB_TIMEOUT=3
 GRUB_GFXMODE=1024x768
@@ -349,7 +372,7 @@ sudo dnf install nodejs npm yarnpkg
 ```
 
 
-## Productivity tools
+## Screen grabbers
 
 Install flameshot:
 
