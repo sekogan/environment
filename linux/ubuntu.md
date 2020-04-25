@@ -304,8 +304,7 @@ Generate grub configuration:
 sudo update-grub
 ```
 
-
-## Undervolting, fan control and monitoring tools
+## Monitoring tools
 
 Install lm-sensors (required by freon):
 
@@ -316,6 +315,17 @@ sudo sensors-detect
 
 Install [freon](https://extensions.gnome.org/extension/841/freon/).
 
+Install GPU monitoring tools:
+
+```
+sudo apt install nvtop
+sudo apt install intel-gpu-tools
+```
+
+
+## Undervolting and fan control
+
+Install undervolting tool:
 
 ```
 sudo apt install python3-pip
@@ -351,13 +361,6 @@ Check that the script works and enable service:
 ```
 sudo systemctl start undervolt
 sudo systemctl enable undervolt
-```
-
-Install GPU monitoring tools:
-
-```
-sudo apt install nvtop
-sudo apt install intel-gpu-tools
 ```
 
 Disable fan controller in BIOS (Dell laptops only):
@@ -408,15 +411,40 @@ Install and start i8k fan control (Dell laptops only):
 
 ```
 sudo apt install i8kutils
+```
+
+Edit configuration file:
+
+```
 sudo vi /etc/i8kmon.conf
 ```
 
 ```
+set config(poll_ac)     0
+set config(poll_fans)   0
 set config(0)   {{0 0}  -1  55  -1  55}
 set config(1)   {{0 1}  50  60  50  60}
-set config(2)   {{1 1}  55  70  55  70}
-set config(3)   {{2 2}  65 128  65 128}
+set config(2)   {{1 1}  55  65  55  65}
+set config(3)   {{2 1}  60  70  60  70}
+set config(4)   {{2 2}  65 128  65 128}
 ```
+
+Patch i8kmon to fix [sound issue](https://github.com/vitorafsr/i8kutils/issues/15).
+
+```
+cd ~/projects
+git clone https://github.com/sekogan/i8kutils.git
+sudo mv /usr/bin/i8kmon /usr/bin/i8kmon.original
+sudo cp ~/projects/i8kutils/i8kmon /usr/bin/
+```
+
+Test that it works:
+
+```
+sudo i8kmon -v
+```
+
+Enable i8kmon service:
 
 ```
 sudo systemctl enable i8kmon
