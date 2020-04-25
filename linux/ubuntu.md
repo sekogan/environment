@@ -41,8 +41,6 @@ Also install:
 ```
 sudo apt install vim
 sudo apt install mc
-sudo apt install htop
-sudo apt install iotop
 sudo apt install ripgrep
 cargo install exa
 sudo apt install neofetch
@@ -315,6 +313,12 @@ sudo update-grub
 ```
 
 ## Monitoring tools
+
+```
+sudo apt install htop
+sudo apt install iotop
+sudo apt install sysstat
+```
 
 Install lm-sensors (required by freon):
 
