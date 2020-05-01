@@ -483,14 +483,28 @@ VPN connection should now be visible in Settings -> Network.
 
 ## eToken in Firefox
 
-Open Preferences -> Privacy & Security -> Security -> Certificates -> Security Devices. Press "Load" and enter "SafeNet eToken" and `/usr/lib64/libeTPkcs11.so`.
+Firefox should find eToken through p11-kit-proxy module which is loaded by default on Fedora.
 
-Open https://cvpn.kaspersky.com/ and try to login. Should be opened without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
+But there is a bug ([1](https://bugzilla.mozilla.org/show_bug.cgi?id=1627273), [2](https://github.com/p11-glue/p11-kit/issues/287)) somewhere in Firefox or p11-kit which leads to Firefox being
+slow and unresponsive when the eToken is inserted.
+
+To work around the bug tell p11-kit not to use the eToken's module in Firefox. Add the following line
+to `/etc/pkcs11/modules/eToken.module`:
+
+```
+disable-in: firefox
+```
+
+Open Preferences -> Privacy & Security -> Security -> Certificates -> Security Devices. Select "p11-kit-proxy" and press Unload. Close the dialog and restart Firefox.
+
+Open Security Devices again. Press "Load" and enter "SafeNet eToken" and `/usr/lib64/libeTPkcs11.so`. Close the dialog and restart Firefox again.
+
+Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
 
 
 ## eToken in Chrome
 
-Open https://cvpn.kaspersky.com/ and try to login. Should be opened without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
+Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
 
 Open and login to MS Teams. Should allow to do video/audio calls.
 

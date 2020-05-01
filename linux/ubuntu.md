@@ -605,12 +605,12 @@ Install CA certificates. Open Firefox and go to Preferences -> Privacy & Securit
 
 Open Preferences -> Privacy & Security -> Security -> Certificates -> Security Devices. Press "Load" and enter "SafeNet eToken" and `/usr/lib/libeTPkcs11.so`.
 
-Open https://cvpn.kaspersky.com/ and try to login. Should be opened without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
+Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
 
 
 ## eToken in Chrome
 
-Open https://cvpn.kaspersky.com/. It should be opened without certificate validation errors.
+Open https://cvpn.kaspersky.com/. It should open without certificate validation errors.
 
 Add token module to $HOME/.pki/nssdb (close all running browsers first):
 
@@ -629,7 +629,7 @@ certutil -U -d sql:$HOME/.pki/nssdb/
 certutil -L -d sql:$HOME/.pki/nssdb/ -h all
 ```
 
-Open https://cvpn.kaspersky.com/ and try to login. Should be opened without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
+Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
 
 Open MS Teams. Should login and allow to do video/audio calls.
 
