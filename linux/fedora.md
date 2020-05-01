@@ -252,7 +252,6 @@ sudo dnf install https://downloads.sourceforge.net/project/mscorefonts2/rpms/mst
 ```
 
 
-
 ## Advanced Gnome
 
 Run Clocks and add world clocks (Yekaterinburg, UTC, Houston).
