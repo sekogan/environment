@@ -567,6 +567,7 @@ Install openconnect:
 ```
 sudo apt install openconnect
 ```
+
 Try to connect to VPN manually. Find certificate URL:
 
 ```
@@ -600,7 +601,7 @@ VPN connection should now be visible in Settings -> Network.
 
 ## eToken in Firefox
 
-Install CA certificates. Open Firefix and go to Preferences -> Privacy & Security -> Security -> Certificates -> View Certificates -> Authorities -> Import. Import certs from ~/project/environment/ca.
+Install CA certificates. Open Firefox and go to Preferences -> Privacy & Security -> Security -> Certificates -> View Certificates -> Authorities -> Import. Import certs from ~/project/environment/ca.
 
 Open Preferences -> Privacy & Security -> Security -> Certificates -> Security Devices. Press "Load" and enter "SafeNet eToken" and `/usr/lib/libeTPkcs11.so`.
 

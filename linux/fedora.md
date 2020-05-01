@@ -281,13 +281,17 @@ Install extensions:
 
 - [remove-audio-device-selection-dialog](https://extensions.gnome.org/extension/1482/remove-audio-device-selection-dialog/)
 - [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
-- [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/) (removes dropdown arrows from the top bar)
 - [autohide-battery](https://extensions.gnome.org/extension/595/autohide-battery/) (removes battery icon when on AC power)
 - [transparent-top-bar](https://extensions.gnome.org/extension/1708/transparent-top-bar/) (makes the top bar transparent if there are no windows near it)
 - [icon-hider](https://extensions.gnome.org/extension/351/icon-hider/) (removes any item from the top bar including its own icon)
 - [bing-wallpaper-changer](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
 - [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
 - [block-caribou](https://extensions.gnome.org/extension/1326/block-caribou/) (blocks on-screen keyboard)
+- [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
+- [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
+- [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
+- [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
+- [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
 
 Remove unwanted applications from Dock.
 
@@ -412,6 +416,16 @@ Start peek, go to Preferences and enable "Open file manager after saving".
     - Shortcut: Ctrl + Shift + Print
 
 
+## CA certificates
+
+Install CA certificates to the system storage:
+
+```
+sudo cp ~/projects/environment/ca/* /usr/share/pki/ca-trust-source/anchors/
+sudo update-ca-trust
+```
+
+
 ## VPN
 
 Install eToken driver:
@@ -427,13 +441,6 @@ sudo rpm -Uvh SafenetAuthenticationClient-10.7.xx-0.x86_64.rpm
 popd
 sudo mkdir -p /etc/pkcs11/modules/
 echo "module: /usr/lib64/libeTPkcs11.so" | sudo tee /etc/pkcs11/modules/eToken.module > /dev/null
-```
-
-Install CA certificates:
-
-```
-sudo cp ~/projects/environment/ca/* /usr/share/pki/ca-trust-source/anchors/
-sudo update-ca-trust
 ```
 
 Install openconnect:
