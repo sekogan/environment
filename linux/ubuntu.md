@@ -272,6 +272,7 @@ Install extensions:
 - [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
 - [block-caribou](https://extensions.gnome.org/extension/1326/block-caribou/) (blocks on-screen keyboard)
 - [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
+- [hide-top-bar](https://extensions.gnome.org/extension/545/hide-top-bar/)
 - [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
 - [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
 - [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
