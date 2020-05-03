@@ -296,6 +296,17 @@ vm.swappiness=1
 Reboot and check with `cat /proc/sys/vm/swappiness`.
 
 
+## TTY consoles
+
+On HiDPI screen:
+
+```
+sudo dpkg-reconfigure console-setup
+```
+
+Select UTF-8 -> Guess -> Terminus -> 16x32.
+
+
 ## Boot Loader
 
 Setup grub:
@@ -309,7 +320,8 @@ Set grub parameters:
 ```
 GRUB_TIMEOUT_STYLE=menu
 GRUB_TIMEOUT=3
-GRUB_GFXMODE=1024x768
+GRUB_CMDLINE_LINUX="fbcon=font:TER16x32"
+<!-- GRUB_GFXMODE=1024x768 -->
 ```
 
 Generate grub configuration:
