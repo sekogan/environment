@@ -268,7 +268,7 @@ sudo dnf remove cheese rhythmbox orca
 ```
 sudo dnf install telegram-desktop  # requires RPM Fusion
 sudo dnf install vlc  # requires RPM Fusion
-sudo dnf install qbittorrent
+sudo dnf install transmission
 sudo dnf install gimp
 ```
 
