@@ -234,7 +234,7 @@ Install KeePassXC. Open ~/Yandex.Disk/Documents/kogan_secrets_v5.kdbx.
 
 ## Package managers
 
-Optionally nable RPM Fusion repos:
+Optionally enable RPM Fusion repos:
 
 ```
 sudo dnf config-manager --enable rpmfusion-nonfree-nvidia-driver
