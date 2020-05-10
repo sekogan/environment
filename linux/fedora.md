@@ -138,7 +138,6 @@ ext install 2gua.rainbow-brackets
 ext install mechatroner.rainbow-csv
 
 ext install ms-python.python
-ext install doctorrustynelson.vscode-nomnoml
 ext install esbenp.prettier-vscode
 
 ext install waderyan.gitblame
