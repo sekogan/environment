@@ -126,7 +126,31 @@ Open Preferences in file manager:
 
 Download and install Visual Studio Code.
 
-Open preferences (Ctrl+,) and search "font size". Set font size to 20 (18 on desktop) everywhere.
+Open settings (Ctrl+,) and search "font size". Set font size to 20 (18 on desktop) everywhere.
+
+Install extensions (in Ctrl+P):
+
+```
+ext install ms-python.python
+ext install uloco.theme-bluloco-light
+ext install CoenraadS.bracket-pair-colorizer
+```
+
+Add to settings.json:
+
+```json
+    "bracketPairColorizer.consecutivePairColors": [
+        "()",
+        "[]",
+        "{}",
+        [
+            "Orange",
+            "Orchid",
+            "LightSkyBlue",
+        ],
+        "Red"
+    ],
+```
 
 
 ## Firefox
