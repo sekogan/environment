@@ -132,6 +132,7 @@ Install extensions (in Ctrl+P):
 
 ```
 ext install ms-python.python
+ext install waderyan.gitblame
 ext install uloco.theme-bluloco-light
 ext install CoenraadS.bracket-pair-colorizer
 ```
