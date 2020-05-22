@@ -305,7 +305,7 @@ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-rele
 Optionally add flathub:
 
 ```
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
 Reboot.
@@ -751,5 +751,5 @@ Open and login to MS Teams. Should allow to do video/audio calls.
 ## Remote desktop clients
 
 ```
-sudo dnf install remmina
+flatpak install --user flathub org.remmina.Remmina
 ```
