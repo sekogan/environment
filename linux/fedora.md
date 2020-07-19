@@ -350,6 +350,7 @@ Install extensions:
 - [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
 - [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
 - [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
+- [workspace-grid](https://extensions.gnome.org/extension/484/workspace-grid/)
 
 Remove unwanted applications from Dock.
 
