@@ -107,7 +107,9 @@ Open settings:
         - Launch terminal
         - gnome-terminal (or terminator)
         - Ctrl+Alt+T
-- Region & Language -> Input sources -> Add Russian
+- Region & Language
+    - Formats -> select Russian
+    - Input sources -> Add Russian
 
 Install Gnome Tweaks (in Software).
 
