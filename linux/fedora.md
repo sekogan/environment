@@ -400,9 +400,17 @@ Install extensions:
 - [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
 - [hide-top-bar](https://extensions.gnome.org/extension/545/hide-top-bar/)
 - [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
-- [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
 - [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
 - [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
+
+Install caffeine-plus extension:
+
+```
+git clone git://github.com/qunxyz/gnome-shell-extension-caffeine.git
+cd gnome-shell-extension-caffeine
+./build.sh
+cp -r caffeine-plus@patapon.info ~/.local/share/gnome-shell/extensions
+```
 
 Remove unwanted applications from Dock.
 
