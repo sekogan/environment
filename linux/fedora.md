@@ -107,7 +107,9 @@ Open settings:
         - Launch terminal
         - gnome-terminal (or terminator)
         - Ctrl+Alt+T
-- Region & Language -> Input sources -> Add Russian
+- Region & Language
+    - Formats -> select Russian
+    - Input sources -> Add Russian
 
 Install Gnome Tweaks (in Software).
 
@@ -126,62 +128,7 @@ Open Preferences in file manager:
 
 Download and install Visual Studio Code.
 
-Open settings (Ctrl+,) and search "font size". Set font size to 20 (18 on desktop) everywhere.
-
-Install extensions (via Ctrl+P):
-
-```
-ext install Horla.horla-light-theme
-ext install emmanuelbeziat.vscode-great-icons
-
-ext install 2gua.rainbow-brackets
-ext install mechatroner.rainbow-csv
-
-ext install ms-python.python
-ext install esbenp.prettier-vscode
-
-ext install waderyan.gitblame
-ext install donjayamanne.githistory
-
-ext install stkb.rewrap
-ext install jackytsu.text-transformer
-ext install bibhasdn.unique-lines
-```
-
-Add to settings.json:
-
-```json
-    "debug.console.fontSize": 20,
-    "editor.accessibilitySupport": "off",
-    "editor.dragAndDrop": false,
-    "editor.fontSize": 20,
-    "editor.rulers": [80, 100],
-    "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 100,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "git.enableSmartCommit": true,
-    "markdown.preview.fontSize": 20,
-    "prettier.requireConfig": true,
-    "rewrap.reformat": true,
-    "rewrap.wrappingColumn": 100,
-    "terminal.integrated.fontSize": 20,
-    "window.menuBarVisibility": "toggle",
-    "window.titleBarStyle": "custom",
-    "workbench.colorTheme": "Horla",
-    "workbench.editor.closeOnFileDelete": true,
-    "workbench.editor.showTabs": false,
-    "workbench.iconTheme": "vscode-great-icons",
-    "[javascript]": {
-        "editor.formatOnSave": true
-    },
-    "[javascriptreact]": {
-        "editor.formatOnSave": true
-    },
-    "[python]": {
-        "editor.formatOnSave": true
-    },
-```
+Setup it using [this manual](../vscode.md).
 
 
 ## Firefox
@@ -402,6 +349,7 @@ Install extensions:
 - [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
 - [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
 - [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
+- [workspace-grid](https://extensions.gnome.org/extension/484/workspace-grid/)
 
 Install caffeine-plus extension:
 
