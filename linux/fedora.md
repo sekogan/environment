@@ -351,15 +351,6 @@ Install extensions:
 - [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
 - [workspace-grid](https://extensions.gnome.org/extension/484/workspace-grid/)
 
-Install caffeine-plus extension:
-
-```
-git clone git://github.com/qunxyz/gnome-shell-extension-caffeine.git
-cd gnome-shell-extension-caffeine
-./build.sh
-cp -r caffeine-plus@patapon.info ~/.local/share/gnome-shell/extensions
-```
-
 Remove unwanted applications from Dock.
 
 
