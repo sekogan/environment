@@ -114,7 +114,9 @@ Open settings:
 Install Gnome Tweaks (in Software).
 
 - Appearance -> Themes -> Applications -> Adwaita-dark
-- Keyboard & Mouse -> Additional Layout Options -> Switching to another layout -> Caps Lock
+- Keyboard & Mouse -> Additional Layout Options
+    - Switching to another layout -> Caps Lock
+    - Key to choose the 3rd level -> disable Right Alt
 - Top Bar
     - Date = off
     - Week numbers = on
