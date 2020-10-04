@@ -35,11 +35,6 @@ Run "Install to Hard drive".
 Select custom partitioning, change "LVM" to "Standard Partition" and click "Click here to create them automatically".
 
 
-## Switch from Wayland to X11
-
-Log out, find gear icon and switch to Gnome in X11 mode.
-
-
 ## Basic Terminal
 
 Open Terminal -> Preferences. Set:
@@ -76,6 +71,20 @@ Also install:
 sudo dnf install vim
 sudo dnf install mc
 sudo dnf install ripgrep
+```
+
+
+## Advanced system settings
+
+Disable power saving mode in Intel HDA sound card if experiencing playback delays on SPDIF output.
+
+```
+echo 0 | sudo tee /sys/module/snd_hda_intel/parameters/power_save > /dev/null
+sudo vi /etc/modprobe.d/sound.conf
+```
+
+```
+options snd-hda-intel power_save=0
 ```
 
 
@@ -686,8 +695,8 @@ VPN connection should now be visible in Settings -> Network.
 ## eToken in Firefox
 
 Firefox should find eToken through p11-kit-proxy module which is loaded by default on Fedora.
-
 Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
+
 
 
 ## eToken in Chrome
