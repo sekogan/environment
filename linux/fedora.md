@@ -87,6 +87,15 @@ sudo vi /etc/modprobe.d/sound.conf
 options snd-hda-intel power_save=0
 ```
 
+Stop and disable buggy pipewire.
+
+```
+systemctl --user stop pipewire.socket
+systemctl --user stop pipewire.service
+systemctl --user disable pipewire.socket
+systemctl --user disable pipewire.service
+```
+
 
 ## Basic Gnome
 
