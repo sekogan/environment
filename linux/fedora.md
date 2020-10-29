@@ -628,6 +628,20 @@ sudo update-ca-trust
 ```
 
 
+## Enable weak cryptography (temporarily)
+
+Enable weak cryptography to fix openconnect not allowing to use eToken.
+
+```
+sudo vi /etc/crypto-policies/back-ends/gnutls.config
+```
+
+```
+[overrides]
+# insecure-hash = SHA1
+```
+
+
 ## VPN
 
 Install eToken driver:
