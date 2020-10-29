@@ -35,11 +35,6 @@ Run "Install to Hard drive".
 Select custom partitioning, change "LVM" to "Standard Partition" and click "Click here to create them automatically".
 
 
-## Switch from Wayland to X11
-
-Log out, find gear icon and switch to Gnome in X11 mode.
-
-
 ## Basic Terminal
 
 Open Terminal -> Preferences. Set:
@@ -79,6 +74,29 @@ sudo dnf install ripgrep
 ```
 
 
+## Advanced system settings
+
+Disable power saving mode in Intel HDA sound card if experiencing playback delays on SPDIF output.
+
+```
+echo 0 | sudo tee /sys/module/snd_hda_intel/parameters/power_save > /dev/null
+sudo vi /etc/modprobe.d/sound.conf
+```
+
+```
+options snd-hda-intel power_save=0
+```
+
+Stop and disable buggy pipewire.
+
+```
+systemctl --user stop pipewire.socket
+systemctl --user stop pipewire.service
+systemctl --user disable pipewire.socket
+systemctl --user disable pipewire.service
+```
+
+
 ## Basic Gnome
 
 Open settings:
@@ -114,7 +132,9 @@ Open settings:
 Install Gnome Tweaks (in Software).
 
 - Appearance -> Themes -> Applications -> Adwaita-dark
-- Keyboard & Mouse -> Additional Layout Options -> Switching to another layout -> Caps Lock
+- Keyboard & Mouse -> Additional Layout Options
+    - Switching to another layout -> Caps Lock
+    - Key to choose the 3rd level -> disable Right Alt
 - Top Bar
     - Date = off
     - Week numbers = on
@@ -347,7 +367,6 @@ Install extensions:
 - [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
 - [hide-top-bar](https://extensions.gnome.org/extension/545/hide-top-bar/)
 - [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
-- [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
 - [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
 - [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
 - [workspace-grid](https://extensions.gnome.org/extension/484/workspace-grid/)
@@ -699,8 +718,8 @@ VPN connection should now be visible in Settings -> Network.
 ## eToken in Firefox
 
 Firefox should find eToken through p11-kit-proxy module which is loaded by default on Fedora.
-
 Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
+
 
 
 ## eToken in Chrome
