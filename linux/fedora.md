@@ -691,8 +691,8 @@ Try to connect to VPN manually. Find certificate URL:
 pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan
 
 # p11tool --list-all-certs "pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan"
-    ...
-    URL: pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan;id=%18%C0%E3%0B%93%C3%A5%19;object=le-SpecialSmartcardUserwithioutEn-22619;type=cert
+
+# p11tool --login --list-privkeys pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan
 ```
 
 Use it to connect:
