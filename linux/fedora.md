@@ -666,9 +666,7 @@ sudo vi /etc/crypto-policies/back-ends/gnutls.config
 Install eToken driver:
 
 ```
-sudo dnf install nss-tools
-sudo dnf install pcsc-lite
-sudo dnf install gnutls-utils
+sudo dnf install nss-tools pcsc-lite gnutls-utils
 pushd ~/Yandex.Disk/dist/fedora/vpn/safenet
 sudo rpm --import RPM-GPG-KEY-SafenetAuthenticationClient
 sudo rpm -Uvh SafenetAuthenticationClient-10.7.77-1.x86_64.rpm
@@ -677,11 +675,17 @@ sudo mkdir -p /etc/pkcs11/modules/
 echo "module: /usr/lib64/libeTPkcs11.so" | sudo tee /etc/pkcs11/modules/eToken.module > /dev/null
 ```
 
+Connect the token, restart Firefox and try to navigate to any https site. If it is terribly slow,
+fix it by:
+
+```
+sudo dnf remove opensc
+```
+
 Install openconnect:
 
 ```
-sudo dnf install openconnect
-sudo dnf install vpnc-script
+sudo dnf install openconnect vpnc-script
 ```
 
 Try to connect to VPN manually. Find certificate URL:
