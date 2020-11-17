@@ -74,7 +74,7 @@ sudo dnf install ripgrep
 ```
 
 
-## Advanced system settings
+## Sound
 
 Disable power saving mode in Intel HDA sound card if experiencing playback delays on SPDIF output.
 
@@ -111,7 +111,10 @@ Open settings:
     - Automatic suspend = on
         - Plugged In = on
     - Power Button Action = suspend
-- Displays -> Night Light -> 23:00 - 06:00.
+- Displays -> Night Light
+    - Schedule = Manual
+    - Times = 22:00 - 06:00
+    - Color Temperature = 1/3
 - Mouse & Touchpad
     - Touchpad Speed = 75%
     - Tap to Click = on
@@ -135,9 +138,6 @@ Install Gnome Tweaks (in Software).
 - Keyboard & Mouse -> Additional Layout Options
     - Switching to another layout -> Caps Lock
     - Key to choose the 3rd level -> disable Right Alt
-- Top Bar
-    - Date = off
-    - Week numbers = on
 
 Open Preferences in file manager:
 
