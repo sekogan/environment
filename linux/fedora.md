@@ -3,7 +3,7 @@
 
 Derived from [https://github.com/ai/environment](https://github.com/ai/environment)
 
-Last tested on Fedora 32.
+Last tested on Fedora 33.
 
 
 ## Installation
@@ -166,24 +166,6 @@ Open Preferences in Firefox:
     - Ask to save logins and passwords = off
 
 
-# Chrome
-
-Install Chrome:
-
-```
-sudo dnf install fedora-workstation-repositories
-sudo dnf config-manager --enable google-chrome
-sudo dnf install google-chrome-stable
-```
-
-Open Settings:
-
-- Passwords
-    - Offer to safe = off
-- Appearance
-    - Page zoom = 125% (on HiDPI screen only)
-
-
 ## Git
 
 Install git:
@@ -207,35 +189,19 @@ git config --global credential.helper libsecret
 ```
 
 
-## Github access
-
-Login into github.com in the browser.
-Create a new PAT on GitHub (Avatar -> Settings -> Developer settings -> Personal access tokens
--> Generate new token).
-
+# Environment Repo
 
 ```
 mkdir ~/projects
 cd ~/projects
 git clone https://github.com/sekogan/environment.git
-cd environment
-git push
-user: sekogan
-password: PAT (use special button in Github UI to copy)
+code environment
 ```
-
-Test that git doesn't ask password anymore:
-
-```
-git push
-```
-
-Open this file and fix encountered mishaps.
 
 
 ## Yandex Disk
 
-Download and install RPM package. It will add yandex disk repository automatically.
+Download and install RPM package (https://disk.yandex.ru/download#pc). It will add yandex disk repository automatically.
 
 Then run:
 
@@ -252,6 +218,29 @@ Enter:
 ## KeePass
 
 Install KeePassXC. Open ~/Yandex.Disk/Documents/kogan_secrets_v5.kdbx.
+
+
+## Github access
+
+Login into github.com in the browser.
+Create a new PAT on GitHub (Avatar -> Settings -> Developer settings -> Personal access tokens
+-> Generate new token).
+
+
+```
+cd ~/projects/environment
+git push
+user: sekogan
+password: PAT (use special button in Github UI to copy)
+```
+
+Test that git doesn't ask password anymore:
+
+```
+git push
+```
+
+Open this file and fix encountered mishaps.
 
 
 ## Package managers
@@ -323,13 +312,31 @@ sudo dnf install https://downloads.sourceforge.net/project/mscorefonts2/rpms/mst
 ```
 
 
+# Install Chrome
+
+Install Chrome:
+
+```
+sudo dnf install fedora-workstation-repositories
+sudo dnf config-manager --enable google-chrome
+sudo dnf install google-chrome-stable
+```
+
+Open Settings:
+
+- Passwords
+    - Offer to safe = off
+- Appearance
+    - Page zoom = 125% (on HiDPI screen only)
+
+
 ## Advanced Gnome
 
 Run Clocks and add world clocks (Yekaterinburg, UTC, Houston).
 
 Run Weather and select Moscow.
 
-Open settings:
+Optionally add online accounts:
 
 - Online accounts -> Add Google
 
@@ -356,19 +363,21 @@ sudo dnf install gnome-extensions-app
 
 Install extensions:
 
-- [remove-audio-device-selection-dialog](https://extensions.gnome.org/extension/1482/remove-audio-device-selection-dialog/)
-- [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
 - [autohide-battery](https://extensions.gnome.org/extension/595/autohide-battery/) (removes battery icon when on AC power)
-- [transparent-top-bar](https://extensions.gnome.org/extension/1708/transparent-top-bar/) (makes the top bar transparent if there are no windows near it)
-- [icon-hider](https://extensions.gnome.org/extension/351/icon-hider/) (removes any item from the top bar including its own icon)
 - [bing-wallpaper-changer](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
-- [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
 - [block-caribou](https://extensions.gnome.org/extension/1326/block-caribou/) (blocks on-screen keyboard)
+- [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
+- [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
+- [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
 - [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
 - [hide-top-bar](https://extensions.gnome.org/extension/545/hide-top-bar/)
-- [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
-- [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
+- [icon-hider](https://extensions.gnome.org/extension/351/icon-hider/) (removes any item from the top bar including its own icon)
 - [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
+- [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
+- [remove-audio-device-selection-dialog](https://extensions.gnome.org/extension/1482/remove-audio-device-selection-dialog/)
+- [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
+- [sound-output-device-chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
+- [transparent-top-bar](https://extensions.gnome.org/extension/1708/transparent-top-bar/) (makes the top bar transparent if there are no windows near it)
 - [workspace-grid](https://extensions.gnome.org/extension/484/workspace-grid/)
 
 Remove unwanted applications from Dock.
@@ -623,8 +632,7 @@ Configure keyboard shortcuts:
 Install peek:
 
 ```
-sudo dnf install peek
-sudo dnf install ffmpeg
+sudo dnf install peek ffmpeg
 ```
 
 Start peek, go to Preferences and enable "Open file manager after saving".
@@ -702,7 +710,7 @@ pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%
 Use it to connect:
 
 ```
-sudo openconnect --no-proxy --certificate 'pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan;id=%18%C0%E3%0B%93%C3%A5%19;object=le-SpecialSmartcardUserwithioutEn-22619;type=cert' --script /etc/vpnc/vpnc-script https://cvpn.kaspersky.com
+sudo openconnect --no-proxy --certificate 'pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan;id=%5F%14%1D%3D%22%26%CE%68;object=le-SpecialSmartcardUserwithEncryp-63588;type=cert' --script /etc/vpnc/vpnc-script https://cvpn.kaspersky.com
 ```
 
 Add VPN connection to Network Manager:
