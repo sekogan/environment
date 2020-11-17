@@ -92,8 +92,8 @@ Stop and disable buggy pipewire.
 ```
 systemctl --user stop pipewire.socket
 systemctl --user stop pipewire.service
-systemctl --user disable pipewire.socket
-systemctl --user disable pipewire.service
+systemctl --user mask pipewire.socket
+systemctl --user mask pipewire.service
 ```
 
 
