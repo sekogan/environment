@@ -96,6 +96,12 @@ systemctl --user mask pipewire.socket
 systemctl --user mask pipewire.service
 ```
 
+Install Volume Control
+
+```
+sudo dnf install pavucontrol
+```
+
 
 ## Basic Gnome
 
@@ -744,5 +750,5 @@ Open and login to MS Teams. Should allow to do video/audio calls.
 ## Remote desktop clients
 
 ```
-flatpak install --user flathub org.remmina.Remmina
+sudo dnf install remmina
 ```
