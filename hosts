@@ -1,8 +1,9 @@
 ---
 all:
-    children:
-        fedora:
-            children:
-                workstations_fedora:
-                    hosts:
-                        xps15-fedora.local
+  children:
+    fedora:
+      children:
+        workstations_fedora:
+          hosts:
+            xps15-fedora.local:
+            master-fedora.local:

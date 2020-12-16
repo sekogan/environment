@@ -1,6 +1,17 @@
 ---
 # tasks file for roles/linux/remote-workstation
 
+- name: Remove Remmina flatpak
+  flatpak:
+    name: org.remmina.Remmina
+    state: absent
+
+- name: Remove Remmina user flatpak
+  flatpak:
+    name: org.remmina.Remmina
+    method: user
+    state: absent
+
 - name: Install Remmina
   package:
     state: latest
