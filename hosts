@@ -5,4 +5,4 @@ all:
             children:
                 workstations_fedora:
                     hosts:
-                        xps15-fedora
+                        xps15-fedora.local

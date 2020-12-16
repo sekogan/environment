@@ -54,6 +54,17 @@ Open Terminal -> Preferences. Set:
 sudo dnf update --refresh
 ```
 
+## Run Ansible playbooks
+
+```
+sudo dnf install ansible
+
+sudo ansible-pull -U https://github.com/sekogan/environment.git -l <hostname>
+
+# If the srepository has already been downloaded:
+sudo ansible-playbook local.yml --connection=local -l <hostname>
+```
+
 
 ## Advanced Terminal
 
@@ -363,12 +374,6 @@ Remove unwanted applications from Dock.
 
 
 ## System
-
-Set host name:
-
-```
-sudo hostnamectl set-hostname xxx
-```
 
 Reduce swap usage:
 

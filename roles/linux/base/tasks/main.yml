@@ -1,6 +1,10 @@
 ---
 # tasks file for roles/linux/base
 
+- name: Set host name
+  hostname:
+    name: "{{ inventory_hostname }}"
+
 - name: Install diagnostic tools
   package:
     state: latest
