@@ -1,0 +1,8 @@
+---
+# tasks file for roles/linux/remote-workstation
+
+- name: Install Remmina
+  package:
+    state: latest
+    name:
+    - remmina

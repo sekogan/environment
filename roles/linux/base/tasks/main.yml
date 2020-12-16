@@ -1,0 +1,29 @@
+---
+# tasks file for roles/linux/base
+
+- name: Install diagnostic tools
+  package:
+    state: latest
+    name:
+    - htop
+    - iotop
+    - neofetch
+    - net-tools
+    - qdirstat
+    - sysstat
+
+- name: Install utilities
+  package:
+    state: latest
+    name:
+    - curl
+    - wget
+    - tmux
+
+- name: Uninstall bloatware
+  package:
+    state: absent
+    name:
+    - cheese
+    - rhythmbox
+    - orca

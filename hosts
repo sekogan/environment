@@ -1,0 +1,8 @@
+---
+all:
+    children:
+        fedora:
+            children:
+                workstations_fedora:
+                    hosts:
+                        xps15-fedora

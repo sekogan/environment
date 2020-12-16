@@ -1,0 +1,10 @@
+- hosts: fedora
+  become: true
+  roles:
+  - linux/base
+
+- hosts: workstations_fedora
+  become: true
+  roles:
+  - linux/personal
+  - linux/remote-workstation

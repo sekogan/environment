@@ -258,12 +258,6 @@ sudo dnf config-manager --enable rpmfusion-nonfree-nvidia-driver
 sudo dnf config-manager --enable rpmfusion-nonfree-steam
 ```
 
-Optionally add RPM Fusion:
-
-```
-sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-```
-
 Optionally add flathub:
 
 ```
@@ -273,21 +267,7 @@ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flath
 Reboot.
 
 
-## Remove unused packages
-
-```
-sudo dnf remove cheese rhythmbox orca
-```
-
-
 ## Install essential packages
-
-```
-sudo dnf install telegram-desktop  # requires RPM Fusion
-sudo dnf install vlc  # requires RPM Fusion
-sudo dnf install transmission
-sudo dnf install gimp
-```
 
 Open Telegram and enable Night mode. Then go to Settings:
 
@@ -310,13 +290,6 @@ Open VLC, go to Preferences:
     - Short forward jump = Right
     - Cycle subtitle track = s
     - Cycle audio track = a
-
-Optionally install Microsoft fonts:
-
-```
-sudo dnf install https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
-```
-
 
 # Install Chrome
 
@@ -449,14 +422,6 @@ sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 
 ## Monitoring tools
-
-```
-sudo dnf install htop
-sudo dnf install iotop
-sudo dnf install sysstat
-sudo dnf install neofetch
-sudo dnf install qdirstat
-```
 
 Install lm-sensors (required by freon):
 
@@ -745,10 +710,3 @@ Open https://cvpn.kaspersky.com/ and try to login. Should open without certifica
 Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
 
 Open and login to MS Teams. Should allow to do video/audio calls.
-
-
-## Remote desktop clients
-
-```
-sudo dnf install remmina
-```

@@ -1,0 +1,17 @@
+---
+# tasks file for roles/linux/personal
+
+- name: Enable the RPM Fusion repository
+  dnf:
+    state: present
+    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+  when: ansible_distribution == 'Fedora'
+
+- name: Install personal software
+  package:
+    state: latest
+    name:
+    - telegram-desktop  # requires RPM Fusion
+    - vlc  # requires RPM Fusion
+    - transmission
+    - gimp
