@@ -35,3 +35,24 @@
   with_items:
   - pipewire.service
   - pipewire.socket
+
+- name: Check if Intel HDA sound card is active
+  stat: {path: /sys/module/snd_hda_intel}
+  register: stat_result
+
+- name: Disable power saving mode in Intel HDA sound card
+  become: true
+  copy:
+    content: "0\n"
+    dest: /sys/module/snd_hda_intel/parameters/power_save
+    unsafe_writes: true
+  when: stat_result.stat.isdir is defined and stat_result.stat.isdir
+
+- name: Disable power saving mode in Intel HDA sound card
+  become: true
+  lineinfile:
+    path: /etc/modprobe.d/sound.conf
+    regexp: "^options snd-hda-intel"
+    line: options snd-hda-intel power_save=0
+    state: present
+  when: stat_result.stat.isdir is defined and stat_result.stat.isdir

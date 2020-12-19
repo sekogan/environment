@@ -59,10 +59,10 @@ sudo dnf update --refresh
 ```
 sudo dnf install ansible
 
-ansible-pull -U https://github.com/sekogan/environment.git -l <hostname>
+ansible-pull -U https://github.com/sekogan/environment.git -K -l <hostname>
 
 # If the srepository has already been downloaded:
-ansible-playbook local.yml --connection=local -l <hostname>
+ansible-playbook local.yml --connection=local -K -l <hostname>
 ```
 
 
@@ -75,20 +75,6 @@ Optionally install terminator (`sudo dnf install terminator`). Then start it and
     - copy on selection = on
 
 Run `ibus-setup`, go to Emoji and delete keyboard shortcuts.
-
-
-## Sound
-
-Disable power saving mode in Intel HDA sound card if experiencing playback delays on SPDIF output.
-
-```
-echo 0 | sudo tee /sys/module/snd_hda_intel/parameters/power_save > /dev/null
-sudo vi /etc/modprobe.d/sound.conf
-```
-
-```
-options snd-hda-intel power_save=0
-```
 
 
 ## Basic Gnome
