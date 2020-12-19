@@ -59,10 +59,10 @@ sudo dnf update --refresh
 ```
 sudo dnf install ansible
 
-sudo ansible-pull -U https://github.com/sekogan/environment.git -l <hostname>
+ansible-pull -U https://github.com/sekogan/environment.git -l <hostname>
 
 # If the srepository has already been downloaded:
-sudo ansible-playbook local.yml --connection=local -l <hostname>
+ansible-playbook local.yml --connection=local -l <hostname>
 ```
 
 
@@ -96,21 +96,6 @@ sudo vi /etc/modprobe.d/sound.conf
 
 ```
 options snd-hda-intel power_save=0
-```
-
-Stop and disable buggy pipewire.
-
-```
-systemctl --user stop pipewire.socket
-systemctl --user stop pipewire.service
-systemctl --user mask pipewire.socket
-systemctl --user mask pipewire.service
-```
-
-Install Volume Control
-
-```
-sudo dnf install pavucontrol
 ```
 
 

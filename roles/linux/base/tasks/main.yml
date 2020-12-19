@@ -2,10 +2,12 @@
 # tasks file for roles/linux/base
 
 - name: Set host name
+  become: true
   hostname:
     name: "{{ inventory_hostname }}"
 
 - name: Install diagnostic tools
+  become: true
   package:
     state: latest
     name:
@@ -17,6 +19,7 @@
     - sysstat
 
 - name: Install utilities
+  become: true
   package:
     state: latest
     name:
@@ -25,6 +28,7 @@
     - tmux
 
 - name: Uninstall bloatware
+  become: true
   package:
     state: absent
     name:

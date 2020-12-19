@@ -2,12 +2,14 @@
 # tasks file for roles/linux/personal
 
 - name: Enable the RPM Fusion repository
+  become: true
   dnf:
     state: present
     name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
   when: ansible_distribution == 'Fedora'
 
 - name: Install personal software
+  become: true
   package:
     state: latest
     name:
@@ -15,3 +17,21 @@
     - vlc  # requires RPM Fusion
     - transmission
     - gimp
+
+- name: Install sound related packages
+  become: true
+  package:
+    state: latest
+    name:
+    - pavucontrol  # Pulse Audio volume control
+
+- name: Disable buggy Pipewire
+  systemd:
+    name: "{{ item }}"
+    masked: true
+    enabled: false
+    state: stopped
+    scope: user
+  with_items:
+  - pipewire.service
+  - pipewire.socket
