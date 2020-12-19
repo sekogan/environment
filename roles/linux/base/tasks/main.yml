@@ -26,6 +26,9 @@
     - curl
     - wget
     - tmux
+    - vim
+    - mc
+    - ripgrep
 
 - name: Uninstall bloatware
   become: true

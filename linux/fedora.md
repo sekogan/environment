@@ -76,14 +76,6 @@ Optionally install terminator (`sudo dnf install terminator`). Then start it and
 
 Run `ibus-setup`, go to Emoji and delete keyboard shortcuts.
 
-Also install:
-
-```
-sudo dnf install vim
-sudo dnf install mc
-sudo dnf install ripgrep
-```
-
 
 ## Sound
 
