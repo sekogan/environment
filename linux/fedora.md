@@ -432,7 +432,7 @@ Install lm-sensors (required by freon):
 
 ```
 sudo dnf install lm_sensors
-sudo sensors-detect
+sudo sensors-detect --auto
 ```
 
 Install [freon](https://extensions.gnome.org/extension/841/freon/).
@@ -715,3 +715,16 @@ Open https://cvpn.kaspersky.com/ and try to login. Should open without certifica
 Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
 
 Open and login to MS Teams. Should allow to do video/audio calls.
+
+
+## Printer
+
+Go to Canon website and download driver for linux (google "LPB613Cdw driver").
+
+```
+tar xzvf downloaded_file.tgz
+cd linux-UFRII-drv-v520-uken
+sudo ./setup.sh
+```
+
+Go to Settings -> Printers. Delete the printer if already exists and then add it again.
