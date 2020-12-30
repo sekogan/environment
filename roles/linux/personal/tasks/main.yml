@@ -55,4 +55,5 @@
     regexp: "^options snd-hda-intel"
     line: options snd-hda-intel power_save=0
     state: present
+    create: true
   when: stat_result.stat.isdir is defined and stat_result.stat.isdir
