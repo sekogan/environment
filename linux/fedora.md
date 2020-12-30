@@ -61,14 +61,12 @@ sudo dnf install ansible
 
 ansible-pull -U https://github.com/sekogan/environment.git -K -l <hostname>
 
-# If the srepository has already been downloaded:
+# If the repository is already downloaded:
 ansible-playbook local.yml --connection=local -K -l <hostname>
 ```
 
 
 ## Advanced Terminal
-
-Optionally install terminator (`sudo dnf install terminator`). Then start it and go to Preferences:
 
 - Profiles -> default -> General:
     - font = Monospace Regular 14 (15 on laptop)
@@ -232,13 +230,11 @@ sudo dnf config-manager --enable rpmfusion-nonfree-nvidia-driver
 sudo dnf config-manager --enable rpmfusion-nonfree-steam
 ```
 
-Optionally add flathub:
+Optionally add flathub (required for Spotify):
 
 ```
-flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
-
-Reboot.
 
 
 ## Install essential packages
@@ -264,6 +260,13 @@ Open VLC, go to Preferences:
     - Short forward jump = Right
     - Cycle subtitle track = s
     - Cycle audio track = a
+
+Install Spotify:
+
+```
+sudo flatpak install flathub com.spotify.Client
+```
+
 
 # Install Chrome
 
@@ -613,7 +616,7 @@ sudo vi /etc/crypto-policies/back-ends/gnutls.config
 Install eToken driver:
 
 ```
-sudo dnf install nss-tools pcsc-lite gnutls-utils
+sudo dnf install nss-tools pcsc-lite gnutls-utils openssl
 pushd ~/Yandex.Disk/dist/fedora/vpn/safenet
 sudo rpm --import RPM-GPG-KEY-SafenetAuthenticationClient
 sudo rpm -Uvh SafenetAuthenticationClient-10.7.77-1.x86_64.rpm
@@ -664,20 +667,6 @@ sudo systemctl restart NetworkManager.service
 ```
 
 VPN connection should now be visible in Settings -> Network.
-
-
-## eToken in Firefox
-
-Firefox should find eToken through p11-kit-proxy module which is loaded by default on Fedora.
-Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
-
-
-
-## eToken in Chrome
-
-Open https://cvpn.kaspersky.com/ and try to login. Should open without certificate validation errors, ask for token password and show AnyConnect Secure Mobility Client UI.
-
-Open and login to MS Teams. Should allow to do video/audio calls.
 
 
 ## Printer

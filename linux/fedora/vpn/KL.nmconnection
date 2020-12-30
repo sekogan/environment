@@ -3,7 +3,7 @@ id=KL
 uuid=4f199d6c-7142-4eda-80f1-ed54e80b8341
 type=vpn
 autoconnect=false
-permissions=user:sekogan:;
+permissions=user:skogan:;
 
 [vpn]
 authtype=cert
