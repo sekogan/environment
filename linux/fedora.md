@@ -446,7 +446,7 @@ sudo systemctl start undervolt
 ```
 
 
-## Fan control
+## Fan control on Dell laptop
 
 NOTE: not tested in Fedora!
 
@@ -536,6 +536,17 @@ Enable i8kmon service:
 ```
 sudo systemctl enable i8kmon
 sudo systemctl start i8kmon
+```
+
+
+## Fan control on AMD GPUs
+
+```
+sudo pip3 install amdgpu-fan
+sudo cp ~/projects/environment/linux/etc/amdgpu-fan.yml /etc/
+sudo cp ~/projects/environment/linux/etc/amdgpu-fan.service /etc/systemd/system/
+sudo systemctl enable amdgpu-fan
+sudo systemctl start amdgpu-fan
 ```
 
 
