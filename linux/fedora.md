@@ -317,19 +317,22 @@ Install Extensions app:
 sudo dnf install gnome-extensions-app
 ```
 
-Install extensions:
+Install essential extensions:
+
+- [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
+- [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
+- [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
+
+Install optional extensions:
 
 - [autohide-battery](https://extensions.gnome.org/extension/595/autohide-battery/) (removes battery icon when on AC power)
 - [bing-wallpaper-changer](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
 - [block-caribou](https://extensions.gnome.org/extension/1326/block-caribou/) (blocks on-screen keyboard)
-- [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
 - [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
-- [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
 - [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
 - [hide-top-bar](https://extensions.gnome.org/extension/545/hide-top-bar/)
 - [icon-hider](https://extensions.gnome.org/extension/351/icon-hider/) (removes any item from the top bar including its own icon)
 - [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
-- [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
 - [remove-audio-device-selection-dialog](https://extensions.gnome.org/extension/1482/remove-audio-device-selection-dialog/)
 - [remove-dropdown-arrows](https://extensions.gnome.org/extension/800/remove-dropdown-arrows/)
 - [sound-output-device-chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
@@ -353,42 +356,13 @@ vm.swappiness=1
 
 Reboot and check with `cat /proc/sys/vm/swappiness`.
 
-Setup daily cleaning of unwanted files:
+
+Turn off automatic core dumps:
 
 ```
-sudo vi /etc/cron.daily/clean_coredumps
-```
-
-```
-#!/bin/env bash
-
-DIR=/var/lib/systemd/coredump
-
-find $DIR/* -mtime 1 -exec rm {} \;
-```
-
-```
-sudo chmod a+x /etc/cron.daily/clean_coredumps
-```
-
-
-## Boot Loader
-
-Setup grub:
-
-```
-sudo vi /etc/default/grub
-```
-
-```
-GRUB_TIMEOUT=0
-```
-
-Generate grub configuration (make sure /boot/efi/EFI/fedora/grub.cfg exist before running the command,
-find the file if doesn't):
-
-```
-sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+sudo cp ~/projects/environment/linux/etc/50-coredump.conf /etc/sysctl.d/
+sudo sysctl -p /etc/sysctl.d/50-coredump.conf
+sudo rm /var/lib/systemd/coredump/*
 ```
 
 
@@ -690,7 +664,7 @@ Go to Canon website and download driver for linux (google "LPB613Cdw driver").
 ```
 tar xzvf downloaded_file.tgz
 cd linux-UFRII-drv-v520-uken
-sudo ./setup.sh
+sudo ./install.sh
 ```
 
 Go to Settings -> Printers. Delete the printer if already exists and then add it again.
