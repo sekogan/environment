@@ -13,7 +13,7 @@ ext install emmanuelbeziat.vscode-great-icons
 ext install 2gua.rainbow-brackets
 ext install mechatroner.rainbow-csv
 
-ext install ms-python.python
+ext install ms-python.vscode-pylance
 ext install esbenp.prettier-vscode
 
 ext install waderyan.gitblame
@@ -62,6 +62,7 @@ Add to settings.json:
     "python.formatting.blackPath": "C:\\Python38\\Scripts\\black.exe",
     "python.formatting.provider": "black",
     "python.jediEnabled": false,
+    "python.languageServer": "Pylance",
     "python.linting.mypyEnabled": true,
     "python.linting.mypyPath": "C:/Python38/Scripts/mypy.exe",
     "python.linting.pycodestyleEnabled": false,
@@ -72,6 +73,5 @@ Add to settings.json:
     },
     "[javascriptreact]": {
         "editor.formatOnSave": true
-    },
-    "prettier.requireConfig": true,
+    }
 ```
