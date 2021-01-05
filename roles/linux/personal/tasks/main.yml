@@ -38,7 +38,7 @@
 
 - name: Check if Intel HDA sound card is active
   stat: {path: /sys/module/snd_hda_intel}
-  register: stat_result
+  register: snd_hda_intel
 
 - name: Disable power saving mode in Intel HDA sound card
   become: true
@@ -46,7 +46,7 @@
     content: "0\n"
     dest: /sys/module/snd_hda_intel/parameters/power_save
     unsafe_writes: true
-  when: stat_result.stat.isdir is defined and stat_result.stat.isdir
+  when: snd_hda_intel.stat.isdir is defined and snd_hda_intel.stat.isdir
 
 - name: Disable power saving mode in Intel HDA sound card
   become: true
@@ -56,4 +56,4 @@
     line: options snd-hda-intel power_save=0
     state: present
     create: true
-  when: stat_result.stat.isdir is defined and stat_result.stat.isdir
+  when: snd_hda_intel.stat.isdir is defined and snd_hda_intel.stat.isdir
