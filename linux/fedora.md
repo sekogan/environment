@@ -320,7 +320,10 @@ sudo dnf install gnome-extensions-app
 Install essential extensions:
 
 - [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
+    - open settings and disable everything except "Show Caffeine in top panel"
 - [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
+    - open settings and enter email
+- [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
 - [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
 
 Install optional extensions:
@@ -329,7 +332,6 @@ Install optional extensions:
 - [bing-wallpaper-changer](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
 - [block-caribou](https://extensions.gnome.org/extension/1326/block-caribou/) (blocks on-screen keyboard)
 - [cpu-power-manager](https://extensions.gnome.org/extension/945/cpu-power-manager/)
-- [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
 - [hide-top-bar](https://extensions.gnome.org/extension/545/hide-top-bar/)
 - [icon-hider](https://extensions.gnome.org/extension/351/icon-hider/) (removes any item from the top bar including its own icon)
 - [impatience](https://extensions.gnome.org/extension/277/impatience/) (set 0.30)
@@ -379,14 +381,6 @@ Install [freon](https://extensions.gnome.org/extension/841/freon/).
 
 
 TODO: install GPU monitoring tools: nvtop and intel gpu tools.
-
-
-Install stress:
-
-```
-sudo dnf install stress
-pip install s-tui --user
-```
 
 
 ## Undervolting
@@ -530,7 +524,7 @@ git clone https://github.com/sekogan/amdgpu-fan.git
 cd amdgpu-fan
 sudo pip3 install .
 sudo cp ~/projects/environment/linux/etc/amdgpu-fan.yml /etc/
-sudo cp amdgpu-fan.service /etc/systemd/system/
+sudo cp ~/projects/environment/linux/etc/amdgpu-fan.service /etc/systemd/system/
 sudo systemctl enable amdgpu-fan
 sudo systemctl start amdgpu-fan
 ```

@@ -16,7 +16,16 @@
     - neofetch
     - net-tools
     - qdirstat
+    - strace
+    - stress  # stress test for hardware (also see s-tui)
     - sysstat
+
+- name: Install diagnostic tools via pip
+  become: true
+  pip:
+    state: latest
+    name:
+    - s-tui  # UI for stress (and htop-like monitor)
 
 - name: Install utilities
   become: true
