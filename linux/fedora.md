@@ -377,7 +377,16 @@ sudo sensors-detect --auto
 
 Install [freon](https://extensions.gnome.org/extension/841/freon/).
 
+
 TODO: install GPU monitoring tools: nvtop and intel gpu tools.
+
+
+Install stress:
+
+```
+sudo dnf install stress
+pip install s-tui --user
+```
 
 
 ## Undervolting
