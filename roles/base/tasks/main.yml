@@ -25,7 +25,7 @@
   pip:
     state: latest
     name:
-    - s-tui  # UI for stress (and htop-like monitor)
+    - s-tui  # UI for stress (and load/temp monitor)
 
 - name: Install utilities
   become: true
@@ -33,11 +33,11 @@
     state: latest
     name:
     - curl
-    - wget
-    - tmux
-    - vim
     - mc
     - ripgrep
+    - tmux
+    - vim
+    - wget
 
 - name: Uninstall bloatware
   become: true
@@ -45,5 +45,5 @@
     state: absent
     name:
     - cheese
-    - rhythmbox
     - orca
+    - rhythmbox
