@@ -36,9 +36,12 @@
   - pipewire.service
   - pipewire.socket
 
-- name: Check if Intel HDA sound card is active
-  stat: {path: /sys/module/snd_hda_intel}
-  register: snd_hda_intel
+- name: Check if Intel HDA sound card is active (1/2)
+  stat: path=/sys/module/snd_hda_intel
+  register: _
+- name: Check if Intel HDA sound card is active (2/2)
+  set_fact:
+    has_intel_hda_sound: "{{ _.stat.isdir }}"
 
 - name: Disable power saving mode in Intel HDA sound card
   become: true
@@ -46,7 +49,7 @@
     content: "0\n"
     dest: /sys/module/snd_hda_intel/parameters/power_save
     unsafe_writes: true
-  when: snd_hda_intel.stat.isdir is defined and snd_hda_intel.stat.isdir
+  when: has_intel_hda_sound
 
 - name: Disable power saving mode in Intel HDA sound card
   become: true
@@ -56,4 +59,4 @@
     line: options snd-hda-intel power_save=0
     state: present
     create: true
-  when: snd_hda_intel.stat.isdir is defined and snd_hda_intel.stat.isdir
+  when: has_intel_hda_sound
