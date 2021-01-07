@@ -195,7 +195,7 @@ Enter:
 
 ## KeePass
 
-Install KeePassXC. Open ~/Yandex.Disk/Documents/kogan_secrets_v5.kdbx.
+Start KeePassXC. Open ~/Yandex.Disk/Documents/kogan_secrets_v5.kdbx.
 
 
 ## Github access
@@ -227,13 +227,6 @@ Optionally enable RPM Fusion repos:
 
 ```
 sudo dnf config-manager --enable rpmfusion-nonfree-nvidia-driver
-sudo dnf config-manager --enable rpmfusion-nonfree-steam
-```
-
-Optionally add flathub (required for Spotify):
-
-```
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
 
@@ -260,12 +253,6 @@ Open VLC, go to Preferences:
     - Short forward jump = Right
     - Cycle subtitle track = s
     - Cycle audio track = a
-
-Install Spotify:
-
-```
-sudo flatpak install flathub com.spotify.Client
-```
 
 
 # Install Chrome

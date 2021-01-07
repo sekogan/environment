@@ -15,3 +15,6 @@
   with_items:
   - pipewire.service
   - pipewire.socket
+
+- name: Install Spotify
+  flatpak: name=com.spotify.Client
