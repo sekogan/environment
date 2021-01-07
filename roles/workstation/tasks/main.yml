@@ -18,6 +18,15 @@
     - transmission
     - vlc  # requires RPM Fusion
 
+- name: Uninstall bloatware
+  become: true
+  package:
+    state: absent
+    name:
+    - cheese
+    - orca
+    - rhythmbox
+
 - import_tasks: hardware/intel_hda_sound.yml
 - import_tasks: software/audio.yml
 - import_tasks: software/remmina.yml
