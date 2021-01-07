@@ -1,0 +1,17 @@
+- name: Install sound related packages
+  become: true
+  package:
+    state: latest
+    name:
+    - pavucontrol  # Pulse Audio volume control
+
+- name: Disable buggy Pipewire
+  systemd:
+    name: "{{ item }}"
+    masked: true
+    enabled: false
+    state: stopped
+    scope: user
+  with_items:
+  - pipewire.service
+  - pipewire.socket

@@ -1,6 +1,3 @@
----
-# tasks file for roles/linux/remote-workstation
-
 - name: Remove Remmina flatpak
   become: true
   flatpak:

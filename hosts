@@ -1,10 +1,4 @@
----
-all:
-  children:
-    fedora:
-      children:
-        workstations_fedora:
-          hosts:
-            skogan-xps15-fedora.local:
-            master-fedora.local:
-            skogan-latitude-fedora.local:
+[workstations]
+skogan-xps15-fedora.local
+master-fedora.local
+skogan-latitude-fedora.local

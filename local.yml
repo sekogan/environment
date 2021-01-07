@@ -3,14 +3,13 @@
   - name: pre tasks
     import_tasks: tasks/pre_tasks.yml
 
-- hosts: fedora
+- hosts: all
   roles:
-  - linux/base
+  - base
 
-- hosts: workstations_fedora
+- hosts: workstations
   roles:
-  - linux/personal
-  - linux/remote-workstation
+  - workstation
 
 - hosts: all
   post_tasks:
