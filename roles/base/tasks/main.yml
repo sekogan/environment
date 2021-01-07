@@ -1,40 +1,7 @@
----
-# tasks file for roles/linux/base
-
 - name: Set host name
   become: true
   hostname:
     name: "{{ inventory_hostname }}"
 
-- name: Install system diagnostic tools
-  become: true
-  package:
-    state: latest
-    name:
-    - htop
-    - iotop
-    - neofetch
-    - net-tools
-    - qdirstat
-    - strace
-    - stress  # stress test for hardware (also see s-tui)
-    - sysstat
-
-- name: Install diagnostic tools via pip
-  become: true
-  pip:
-    state: latest
-    name:
-    - s-tui  # UI for stress (and load/temp monitor)
-
-- name: Install system administrator utilities
-  become: true
-  package:
-    state: latest
-    name:
-    - curl
-    - mc
-    - ripgrep
-    - tmux
-    - vim
-    - wget
+- import_tasks: software/system_tools.yml
+- import_tasks: software/dev_tools.yml

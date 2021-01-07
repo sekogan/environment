@@ -1,0 +1,13 @@
+- name: Install GUI utilities
+  become: true
+  package:
+    state: latest
+    name:
+    - gimp
+    - google-chrome-stable
+    - gparted
+    - keepassxc
+    - meld
+    - telegram-desktop  # requires RPM Fusion
+    - transmission
+    - vlc  # requires RPM Fusion

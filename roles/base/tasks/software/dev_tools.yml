@@ -1,0 +1,6 @@
+- name: Install CLI developer tools
+  become: true
+  package:
+    state: latest
+    name:
+    - git

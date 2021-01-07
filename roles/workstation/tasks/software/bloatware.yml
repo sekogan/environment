@@ -1,0 +1,8 @@
+- name: Uninstall bloatware
+  become: true
+  package:
+    state: absent
+    name:
+    - cheese
+    - orca
+    - rhythmbox

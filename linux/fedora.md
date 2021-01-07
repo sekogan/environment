@@ -255,15 +255,7 @@ Open VLC, go to Preferences:
     - Cycle audio track = a
 
 
-# Install Chrome
-
-Install Chrome:
-
-```
-sudo dnf install fedora-workstation-repositories
-sudo dnf config-manager --enable google-chrome
-sudo dnf install google-chrome-stable
-```
+## Google Chrome
 
 Open Settings:
 
