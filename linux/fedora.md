@@ -146,23 +146,12 @@ Open Preferences in Firefox:
 
 ## Git
 
-Install git:
-
-```
-sudo dnf install git
-```
 
 Configure git:
 
 ```
 git config --global user.name "Sergey Kogan"
 git config --global user.email sekogan@gmail.com
-```
-
-Configure password store for git:
-
-```
-sudo dnf install git-credential-libsecret
 git config --global credential.helper libsecret
 ```
 

@@ -4,3 +4,4 @@
     state: latest
     name:
     - git
+    - git-credential-libsecret
