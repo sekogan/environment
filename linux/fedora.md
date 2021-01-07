@@ -500,12 +500,6 @@ sudo systemctl start amdgpu-fan
 
 ## Screen grabbers
 
-Install flameshot:
-
-```
-sudo dnf install flameshot
-```
-
 Start and configure flameshot (`flameshot config`):
 
 - Configuration
@@ -522,11 +516,6 @@ Configure keyboard shortcuts:
     - Command: flameshot gui
     - Shortcut: Ctrl + Print
 
-Install peek:
-
-```
-sudo dnf install peek ffmpeg
-```
 
 Start peek, go to Preferences and enable "Open file manager after saving".
 
