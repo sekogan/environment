@@ -498,14 +498,6 @@ sudo systemctl start amdgpu-fan
 ```
 
 
-## Install developer tools
-
-```
-sudo dnf install meld
-sudo dnf install nodejs npm yarnpkg
-```
-
-
 ## Screen grabbers
 
 Install flameshot:
