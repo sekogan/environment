@@ -6,3 +6,4 @@
 - import_tasks: software/audio.yml
 - import_tasks: software/bloatware.yml
 - import_tasks: software/remmina.yml
+- import_tasks: software/vpn.yml

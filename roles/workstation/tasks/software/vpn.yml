@@ -1,0 +1,25 @@
+- name: Install eToken dependencies
+  become: true
+  package:
+    state: latest
+    name:
+    - nss-tools
+    - pcsc-lite
+    - gnutls-utils
+    - openssl
+
+- name: Uninstall opensc (makes Firefox non-responsive)
+  become: true
+  package:
+    state: absent
+    name:
+    - opensc
+
+- name: Install openconnect
+  become: true
+  package:
+    state: latest
+    name:
+    - openconnect
+    - vpnc-script
+    - NetworkManager-openconnect-gnome
