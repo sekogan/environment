@@ -1,5 +1,5 @@
 - hosts: all
-  pre_tasks:
+  tasks:
   - name: pre tasks
     import_tasks: tasks/pre_tasks.yml
 
@@ -12,6 +12,6 @@
   - workstation
 
 - hosts: all
-  post_tasks:
-  - name: pre tasks
+  tasks:
+  - name: post tasks
     import_tasks: tasks/post_tasks.yml
