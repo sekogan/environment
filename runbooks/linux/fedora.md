@@ -333,7 +333,7 @@ Reboot and check with `cat /proc/sys/vm/swappiness`.
 Turn off automatic core dumps:
 
 ```
-sudo cp ~/projects/environment/linux/etc/50-coredump.conf /etc/sysctl.d/
+sudo cp ~/projects/environment/runbooks/linux/etc/50-coredump.conf /etc/sysctl.d/
 sudo sysctl -p /etc/sysctl.d/50-coredump.conf
 sudo rm /var/lib/systemd/coredump/*
 ```
@@ -521,7 +521,7 @@ Start peek, go to Preferences and enable "Open file manager after saving".
 Install CA certificates to the system storage:
 
 ```
-sudo cp ~/projects/environment/ca/* /usr/share/pki/ca-trust-source/anchors/
+sudo cp ~/projects/environment/runbooks/ca/* /usr/share/pki/ca-trust-source/anchors/
 sudo update-ca-trust
 ```
 
@@ -574,7 +574,7 @@ sudo openconnect --no-proxy --certificate 'pkcs11:model=eToken;manufacturer=Safe
 Add VPN connection to Network Manager:
 
 ```
-sudo cp ~/projects/environment/linux/fedora/vpn/KL.nmconnection /etc/NetworkManager/system-connections/
+sudo cp ~/projects/environment/runbooks/linux/fedora/vpn/KL.nmconnection /etc/NetworkManager/system-connections/
 cd /etc/NetworkManager/system-connections
 sudo chown root:root KL.nmconnection
 sudo chmod go-rw KL.nmconnection
