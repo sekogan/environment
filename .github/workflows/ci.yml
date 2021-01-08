@@ -1,0 +1,11 @@
+name: Environment CI
+
+on:
+- push
+
+jobs:
+  yamllint:
+    runs-on: fedora-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ibiqlik/action-yamllint@v3
