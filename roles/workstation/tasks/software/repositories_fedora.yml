@@ -12,13 +12,15 @@
 
 - name: List enabled dnf repositories
   block:
-  - become: true
+  - name: List enabled dnf repositories | Run dnf
+    become: true
     command:
       cmd: dnf repolist enabled
       warn: false
     register: _
     changed_when: false
-  - set_fact:
+  - name: List enabled dnf repositories | Set fact
+    set_fact:
       dnf_repolist_enabled_stdout: "{{ _.stdout }}"
 
 - name: Enable 3rd party repositories
