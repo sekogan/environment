@@ -4,8 +4,19 @@ on:
 - push
 
 jobs:
-  yamllint:
+  yaml-lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: ibiqlik/action-yamllint@v3
+
+  ansible-lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ansible/ansible-lint-action@master
+      with:
+        targets: |
+          local.yml
+        override-deps: |
+          ansible==2.9
