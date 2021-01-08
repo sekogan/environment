@@ -1,5 +1,6 @@
 - import_tasks: software/repositories.yml
 
+- import_tasks: hardware/amd_gpu.yml
 - import_tasks: hardware/intel_hda_sound.yml
 
 - import_tasks: software/utilities.yml

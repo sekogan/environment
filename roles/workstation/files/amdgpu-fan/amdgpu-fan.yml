@@ -1,4 +1,4 @@
-#Fan Control Matrix. [<Temp in C>,<Fanspeed in %>]
+# Fan Control Matrix. [<Temp in C>,<Fanspeed in %>]
 speed_matrix:
 - [0, 0]
 - [50, 0]

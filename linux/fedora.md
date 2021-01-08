@@ -487,20 +487,6 @@ sudo systemctl start i8kmon
 ```
 
 
-## Fan control on AMD GPUs
-
-```
-cd ~/projects
-git clone https://github.com/sekogan/amdgpu-fan.git
-cd amdgpu-fan
-sudo pip3 install .
-sudo cp ~/projects/environment/linux/etc/amdgpu-fan.yml /etc/
-sudo cp ~/projects/environment/linux/etc/amdgpu-fan.service /etc/systemd/system/
-sudo systemctl enable amdgpu-fan
-sudo systemctl start amdgpu-fan
-```
-
-
 ## Screen grabbers
 
 Start and configure flameshot (`flameshot config`):
