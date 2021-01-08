@@ -9,3 +9,6 @@ rules:
     spaces: 2
     indent-sequences: false
     check-multi-line-strings: true
+  truthy:
+    allowed-values: ["true", "false"]
+    check-keys: false

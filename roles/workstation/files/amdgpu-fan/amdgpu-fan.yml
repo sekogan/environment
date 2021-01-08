@@ -8,6 +8,7 @@ speed_matrix:
 
 temp_drop: 5
 
+# can be any card returned from `ls /sys/class/drm | grep "^card[[:digit:]]$"`
 # optional
-# cards:  # can be any card returned from `ls /sys/class/drm | grep "^card[[:digit:]]$"`
+# cards:
 # - card0
