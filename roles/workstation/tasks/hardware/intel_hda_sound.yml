@@ -1,22 +1,25 @@
-- name: Check if Intel HDA sound card is active
+- name: Check if Intel HD sound card is present
   block:
-  - stat: path=/sys/module/snd_hda_intel
+  - name: Check if Intel HD sound card is present | List audio devices
+    shell: lspci | grep Audio
     register: _
-  - set_fact:
-      has_intel_hda_sound: "{{ _.stat.isdir }}"
+    changed_when: false
+  - name: Check if Intel HD sound card is present | Check
+    set_fact:
+      has_intel_hd_sound: "{{ 'Intel' in _.stdout and 'HD Audio Controller' in _.stdout }}"
 
-- name: Configure Intel HDA sound card
-  when: has_intel_hda_sound
+- name: Configure Intel HD sound card
+  when: has_intel_hd_sound
   become: true
   block:
-  - name: Disable power saving mode in Intel HDA sound card
+  - name: Disable power saving mode in Intel HD sound card
     copy:
       content: "0\n"
       dest: /sys/module/snd_hda_intel/parameters/power_save
       mode: 0644
       unsafe_writes: true
 
-  - name: Disable power saving mode in Intel HDA sound card
+  - name: Disable power saving mode in Intel HD sound card
     lineinfile:
       path: /etc/modprobe.d/sound.conf
       regexp: "^options snd-hda-intel"

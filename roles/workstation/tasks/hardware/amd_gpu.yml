@@ -1,9 +1,11 @@
 - name: Check if AMD GPU is present
   block:
-  - shell: lspci | grep VGA
+  - name: Check if AMD GPU is present | List VGA devices
+    shell: lspci | grep VGA
     register: _
     changed_when: false
-  - set_fact:
+  - name: Check if AMD GPU is present | Check
+    set_fact:
       has_amd_gpu: "{{ 'AMD' in _.stdout }}"
 
 - name: Configure AMD GPU
