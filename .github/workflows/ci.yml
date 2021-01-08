@@ -14,9 +14,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: ansible/ansible-lint-action@master
+    - uses: actions/setup-python@v2
       with:
-        targets: |
-          local.yml
-        override-deps: |
-          ansible==2.9
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install ansible-lint
+    - name: Lint
+      run: |
+        ansible-lint -v *.yml
+
+  # Disabled because of https://github.com/ansible/ansible-lint-action/issues/41
+  # ansible-lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - uses: ansible/ansible-lint-action@master
+  #     with:
+  #       targets: |
+  #         local.yml
+  #       override-deps: |
+  #         ansible==2.9
