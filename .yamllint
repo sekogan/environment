@@ -5,3 +5,7 @@ rules:
     present: false
   document-end:
     present: false
+  indentation:
+    spaces: 2
+    indent-sequences: false
+    check-multi-line-strings: true
