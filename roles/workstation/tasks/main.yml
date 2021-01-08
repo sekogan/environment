@@ -1,4 +1,5 @@
-- import_tasks: software/repositories.yml
+- include_tasks: software/repositories_{{ ansible_distribution|lower }}.yml
+- import_tasks: software/repositories_flatpak.yml
 
 - import_tasks: hardware/amd_gpu.yml
 - import_tasks: hardware/intel_hda_sound.yml

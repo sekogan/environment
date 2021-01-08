@@ -1,34 +1,29 @@
-- name: Check if AMD GPU is present (1/2)
-  shell: lspci | grep VGA
-  register: _
-  changed_when: false
-- name: Check if AMD GPU is present (2/2)
-  set_fact:
-    has_amd_gpu: "{{ 'AMD' in _.stdout }}"
+- name: Check if AMD GPU is present
+  block:
+  - shell: lspci | grep VGA
+    register: _
+    changed_when: false
+  - set_fact:
+      has_amd_gpu: "{{ 'AMD' in _.stdout }}"
 
-- name: Install AMD GPU fan controller
-  become: true
-  pip: name=git+https://github.com/sekogan/amdgpu-fan.git state=latest
+- name: Configure AMD GPU
   when: has_amd_gpu
-
-- name: Copy amdgpu-fan configuration
   become: true
-  copy: src=amdgpu-fan/amdgpu-fan.yml dest=/etc/ mode=644
-  register: _copy_configuration
-  when: has_amd_gpu
+  block:
+  - name: Install AMD GPU fan controller
+    pip: name=git+https://github.com/sekogan/amdgpu-fan.git state=latest
 
-- name: Install amdgpu-fan systemd unit file
-  become: true
-  copy: src=amdgpu-fan/amdgpu-fan.service dest=/etc/systemd/system/ mode=644
-  when: has_amd_gpu
+  - name: Copy amdgpu-fan configuration
+    copy: src=amdgpu-fan/amdgpu-fan.yml dest=/etc/ mode=644
+    register: _copy_configuration
 
-- name: Start amdgpu-fan
-  become: true
-  systemd: name=amdgpu-fan state=started enabled=yes daemon_reload=yes
-  register: _start_service
-  when: has_amd_gpu
+  - name: Install amdgpu-fan systemd unit file
+    copy: src=amdgpu-fan/amdgpu-fan.service dest=/etc/systemd/system/ mode=644
 
-- name: Restart amdgpu-fan
-  become: true
-  systemd: name=amdgpu-fan state=restarted
-  when: has_amd_gpu and _copy_configuration.changed and not _start_service.changed
+  - name: Start amdgpu-fan
+    systemd: name=amdgpu-fan state=started enabled=yes daemon_reload=yes
+    register: _start_service
+
+  - name: Restart amdgpu-fan
+    systemd: name=amdgpu-fan state=restarted
+    when: _copy_configuration.changed and not _start_service.changed
