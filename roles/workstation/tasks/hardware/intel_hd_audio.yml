@@ -6,7 +6,8 @@
     changed_when: false
   - name: Check if Intel HD audio card is present | Check
     set_fact:
-      has_intel_hd_sound: "{{ 'Intel' in _.stdout and 'HD Audio Controller' in _.stdout }}"
+      has_intel_hd_sound: >
+        "{{ 'Intel' in _.stdout and 'HD Audio Controller' in _.stdout }}"
 
 - name: Configure Intel HD audio card
   when: has_intel_hd_sound
