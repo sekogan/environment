@@ -2,7 +2,7 @@
 - import_tasks: software/repositories_flatpak.yml
 
 - import_tasks: hardware/amd_gpu.yml
-- import_tasks: hardware/intel_hda_sound.yml
+- import_tasks: hardware/intel_hd_audio.yml
 
 - import_tasks: software/utilities.yml
 - import_tasks: software/audio.yml
