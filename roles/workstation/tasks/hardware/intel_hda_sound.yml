@@ -10,6 +10,7 @@
   copy:
     content: "0\n"
     dest: /sys/module/snd_hda_intel/parameters/power_save
+    mode: 0644
     unsafe_writes: true
   when: has_intel_hda_sound
 
@@ -21,4 +22,5 @@
     line: options snd-hda-intel power_save=0
     state: present
     create: true
+    mode: 0644
   when: has_intel_hda_sound

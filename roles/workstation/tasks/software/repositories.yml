@@ -9,7 +9,7 @@
   become: true
   dnf:
     state: present
-    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
   when: ansible_distribution == 'Fedora'
 
 - name: List enabled dnf repositories (1/2)
