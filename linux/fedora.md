@@ -116,6 +116,9 @@ Install Gnome Tweaks (in Software).
 - Keyboard & Mouse -> Additional Layout Options
     - Switching to another layout -> Caps Lock
     - Key to choose the 3rd level -> disable Right Alt
+- Top Bar
+    - Activities Overview Hot Corner -> Off
+    - Week Numbers -> On
 
 Open Preferences in file manager:
 
