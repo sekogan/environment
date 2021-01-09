@@ -8,7 +8,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: ibiqlik/action-yamllint@v3
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install yamllint
+    - name: YAML Lint
+      run: |
+        yamllint .
+
+  ansible-syntax-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install ansible==2.9.*
+    - name: Syntax check
+      run: |
+        ansible-playbook --syntax-check local.yml
 
   ansible-lint:
     runs-on: ubuntu-latest
@@ -20,8 +44,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install ansible-lint
-    - name: Lint
+        python -m pip install ansible-lint
+    - name: Ansible Lint
       run: |
         ansible-lint -v *.yml
 
