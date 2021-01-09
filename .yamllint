@@ -8,7 +8,7 @@ rules:
   indentation:
     spaces: 2
     indent-sequences: false
-    check-multi-line-strings: true
+    check-multi-line-strings: false
   truthy:
     allowed-values: ["true", "false"]
     check-keys: false
