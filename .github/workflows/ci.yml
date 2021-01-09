@@ -3,6 +3,10 @@ name: CI
 on:
 - push
 
+env:
+  python_version: "3.9"
+  ansible_version: "2.9.*"
+
 jobs:
   yaml-lint:
     runs-on: ubuntu-latest
@@ -10,7 +14,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: ${{ env.python_version }}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -25,11 +29,11 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: ${{ env.python_version }}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install ansible==2.9.*
+        python -m pip install ansible==${{ env.ansible_version }}
     - name: Syntax check
       run: |
         ansible-playbook --syntax-check local.yml
@@ -40,10 +44,11 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: ${{ env.python_version }}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        python -m pip install ansible==${{ env.ansible_version }}
         python -m pip install ansible-lint
     - name: Ansible Lint
       run: |
