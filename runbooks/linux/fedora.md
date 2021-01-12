@@ -595,3 +595,11 @@ sudo ./install.sh
 ```
 
 Go to Settings -> Printers. Delete the printer if already exists and then add it again.
+
+
+## Vagrant + libvirt + qemu
+
+```
+sudo dnf install vagrant vagrant-libvirt libvirt qemu
+pip install molecule molecule-vagrant python-vagrant
+```
