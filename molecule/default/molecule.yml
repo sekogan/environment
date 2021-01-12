@@ -1,0 +1,19 @@
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: libvirt
+    type: libvirt
+    options:
+      memory: 512
+      cpus: 2
+platforms:
+- name: fedora33
+  box: generic/fedora33
+  groups:
+  - workstations
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
