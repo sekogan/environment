@@ -1,7 +1,7 @@
 - name: Check if Intel HD audio card is present
   block:
   - name: Check if Intel HD audio card is present | List audio devices
-    shell: lspci | grep Audio
+    shell: lspci | grep Audio || (exit 0)
     register: _
     changed_when: false
   - name: Check if Intel HD audio card is present | Check
