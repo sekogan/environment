@@ -1,3 +1,9 @@
+- name: Install flatpak
+  become: true
+  dnf:
+    name: flatpak
+    state: present
+
 - name: Add flathub (required for Spotify)
   become: true
   flatpak_remote:
