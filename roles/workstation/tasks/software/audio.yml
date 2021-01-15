@@ -17,4 +17,5 @@
   - pipewire.socket
 
 - name: Install Spotify
+  become: true
   flatpak: name=com.spotify.Client

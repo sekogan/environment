@@ -4,13 +4,11 @@ driver:
   name: vagrant
   provider:
     name: libvirt
-    type: libvirt
-    options:
-      memory: 512
-      cpus: 2
 platforms:
 - name: fedora33
   box: generic/fedora33
+  memory: 1024  # flatpak cannot install Spotify on 512M
+  cpus: 2
   groups:
   - workstations
 provisioner:
