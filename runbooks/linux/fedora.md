@@ -1,8 +1,5 @@
 # Fedora environment
 
-
-Derived from [https://github.com/ai/environment](https://github.com/ai/environment)
-
 Last tested on Fedora 33.
 
 
@@ -54,15 +51,25 @@ Open Terminal -> Preferences. Set:
 sudo dnf update --refresh
 ```
 
+
+## Host name
+
+Set host name:
+
+```
+sudo hostnamectl set-hostname NEW_HOSTNAME
+```
+
+
 ## Run Ansible playbooks
 
 ```
 sudo dnf install ansible
 
-ansible-pull -U https://github.com/sekogan/environment.git -K -l <hostname>
+ansible-pull -U https://github.com/sekogan/environment.git -K
 
 # If the repository is already downloaded:
-ansible-playbook local.yml --connection=local -K -l <hostname>
+ansible-playbook local.yml -K
 ```
 
 
@@ -595,11 +602,3 @@ sudo ./install.sh
 ```
 
 Go to Settings -> Printers. Delete the printer if already exists and then add it again.
-
-
-## Vagrant + libvirt + qemu
-
-```
-sudo dnf install vagrant vagrant-libvirt libvirt qemu
-pip install molecule molecule-vagrant python-vagrant
-```
