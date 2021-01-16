@@ -9,9 +9,11 @@ platforms:
   box: generic/fedora33
   memory: 1024  # flatpak cannot install Spotify on 512M
   cpus: 2
-  groups:
-  - workstations
 provisioner:
   name: ansible
+  connection_options:
+    ansible_connection: ssh
 verifier:
   name: ansible
+  connection_options:
+    ansible_connection: ssh

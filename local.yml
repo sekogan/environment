@@ -1,17 +1,12 @@
 - hosts: all
-  tasks:
-  - name: pre tasks
-    import_tasks: tasks/pre_tasks.yml
+  connection: local
 
-- hosts: all
+  pre_tasks:
+  - import_tasks: tasks/pre_tasks.yml
+
   roles:
   - base
-
-- hosts: workstations
-  roles:
   - workstation
 
-- hosts: all
-  tasks:
-  - name: post tasks
-    import_tasks: tasks/post_tasks.yml
+  post_tasks:
+  - import_tasks: tasks/post_tasks.yml
