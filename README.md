@@ -33,6 +33,5 @@ sudo pip install molecule molecule-vagrant python-vagrant yamllint ansible-lint
 Run tests:
 
 ```
-cd ~/projects/environment
 molecule test
 ```
