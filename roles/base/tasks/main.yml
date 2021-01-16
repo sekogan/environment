@@ -1,7 +1,2 @@
-- name: Set host name
-  become: true
-  hostname:
-    name: "{{ inventory_hostname }}"
-
 - import_tasks: software/system_tools.yml
 - import_tasks: software/dev_tools.yml
