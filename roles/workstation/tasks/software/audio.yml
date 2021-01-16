@@ -16,6 +16,9 @@
   - pipewire.service
   - pipewire.socket
 
-- name: Install Spotify
+- name: Uninstall system-wide Spotify
   become: true
-  flatpak: name=com.spotify.Client
+  flatpak: name=com.spotify.Client state=absent
+
+- name: Install Spotify
+  flatpak: name=com.spotify.Client method=user
