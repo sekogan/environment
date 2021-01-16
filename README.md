@@ -17,6 +17,12 @@ Inspired by [https://github.com/ai/environment](https://github.com/ai/environmen
 
 ## Testing
 
+Install git hooks:
+
+```
+git config --local core.hooksPath .githooks/
+```
+
 Install required packages:
 
 ```
