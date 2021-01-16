@@ -1,6 +1,6 @@
 - name: Install sound related packages
   become: true
-  package:
+  dnf:
     state: latest
     name:
     - pavucontrol  # Pulse Audio volume control

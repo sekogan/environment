@@ -12,7 +12,7 @@
 
 - name: Install Remmina
   become: true
-  package:
+  dnf:
     state: latest
     name:
     - remmina

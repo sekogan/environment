@@ -1,6 +1,6 @@
 - name: Uninstall bloatware
   become: true
-  package:
+  dnf:
     state: absent
     name:
     - cheese

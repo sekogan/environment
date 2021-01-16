@@ -1,6 +1,6 @@
 - name: Install CLI developer tools
   become: true
-  package:
+  dnf:
     state: latest
     name:
     - git

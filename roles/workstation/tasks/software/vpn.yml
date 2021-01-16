@@ -1,6 +1,6 @@
 - name: Install eToken dependencies
   become: true
-  package:
+  dnf:
     state: latest
     name:
     - nss-tools
@@ -10,14 +10,14 @@
 
 - name: Uninstall opensc (makes Firefox non-responsive)
   become: true
-  package:
+  dnf:
     state: absent
     name:
     - opensc
 
 - name: Install openconnect
   become: true
-  package:
+  dnf:
     state: latest
     name:
     - openconnect

@@ -1,6 +1,6 @@
 - name: Install GUI utilities
   become: true
-  package:
+  dnf:
     state: latest
     name:
     - ffmpeg  # required for peek
