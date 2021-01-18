@@ -560,6 +560,12 @@ sudo mkdir -p /etc/pkcs11/modules/
 echo "module: /usr/lib64/libeTPkcs11.so" | sudo tee /etc/pkcs11/modules/eToken.module > /dev/null
 ```
 
+Stop SACSrv (allegedly it starts SACMonitor which is a CPU hog):
+
+```
+sudo systemctl stop SACSrv.service
+sudo systemctl disable SACSrv.service
+```
 
 Try to connect to VPN manually. Find certificate URL:
 
