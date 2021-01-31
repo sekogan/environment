@@ -493,6 +493,24 @@ sudo systemctl enable i8kmon
 sudo systemctl start i8kmon
 ```
 
+## Fix issues with Intel Wifi
+
+Not sure it helped, but done this so far:
+
+`/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf`
+
+```
+[connection]
+wifi.powersave = 2
+```
+
+`/etc/modprobe.d/iwlwifi.conf`
+
+```
+options iwlwifi 11n_disable=8
+options iwlmvm power_scheme=1
+```
+
 
 ## Screen grabbers
 
