@@ -547,6 +547,7 @@ Install CA certificates to the system storage:
 
 ```
 sudo cp ~/projects/environment/runbooks/ca/* /usr/share/pki/ca-trust-source/anchors/
+sudo cp ~/projects/environment/certificates/ca/ca_certificate.pem /usr/share/pki/ca-trust-source/anchors/sergei_kogan_personal_ca.pem
 sudo update-ca-trust
 ```
 
