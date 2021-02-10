@@ -1,7 +1,7 @@
 #
 
-https://www.rabbitmq.com/ssl.html#manual-certificate-generation
-https://jamielinux.com/docs/openssl-certificate-authority/introduction.html
+- https://www.rabbitmq.com/ssl.html#manual-certificate-generation
+- https://jamielinux.com/docs/openssl-certificate-authority/introduction.html
 
 
 ## Generate private CA
