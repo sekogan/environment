@@ -546,8 +546,8 @@ Start peek, go to Preferences and enable "Open file manager after saving".
 Install CA certificates to the system storage:
 
 ```
-sudo cp ~/projects/environment/runbooks/ca/* /usr/share/pki/ca-trust-source/anchors/
-sudo cp ~/projects/environment/certificates/ca/ca_certificate.pem /usr/share/pki/ca-trust-source/anchors/sergei_kogan_personal_ca.pem
+sudo cp ~/projects/environment/certificates/kaspersky_ca/* /usr/share/pki/ca-trust-source/anchors/
+sudo cp ~/projects/environment/certificates/personal_ca/ca_certificate.pem /usr/share/pki/ca-trust-source/anchors/sergei_kogan_personal_ca.pem
 sudo update-ca-trust
 ```
 
