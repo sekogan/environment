@@ -5,17 +5,6 @@
     name:
     - pavucontrol  # Pulse Audio volume control
 
-- name: Disable buggy Pipewire
-  systemd:
-    name: "{{ item }}"
-    masked: true
-    enabled: false
-    state: stopped
-    scope: user
-  with_items:
-  - pipewire.service
-  - pipewire.socket
-
 - name: Uninstall system-wide Spotify
   become: true
   flatpak: name=com.spotify.Client state=absent
