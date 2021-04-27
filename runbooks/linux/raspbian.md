@@ -117,11 +117,27 @@ HD_IDLE_OPTS="-i 0 -a /dev/sda -i 3600 -a /dev/sdb -i 3610 -a /dev/sdc -i 3620 -
 
 Set OMV disk settings to:
 
-- APM = 192
+- APM = Disabled
 - AAM = Disabled
 - Spindown = Disabled
 
 ```
 sudo systemctl restart hd-idle
 sudo systemctl enable hd-idle
+```
+
+
+```
+sudo vi /usr/local/bin/snapraid-weekly
+sudo chmod 744 /usr/local/bin/snapraid-weekly
+```
+
+```bash
+#!/bin/bash
+set -e
+snapraid=/usr/local/bin/snapraid
+$snapraid smart
+$snapraid status
+$snapraid --plan 100 --older-than 30 scrub
+$snapraid --pre-hash sync
 ```
