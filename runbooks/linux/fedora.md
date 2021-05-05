@@ -303,6 +303,8 @@ Install essential extensions:
     - open settings and enter email
 - [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
 - [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
+- [Guillotine](https://extensions.gnome.org/extension/3981/guillotine/)
+    - `cp ~/projects/environment/runbooks/linux/fedora/.config/guillotine.json ~/.config/`
 
 Install optional extensions:
 
