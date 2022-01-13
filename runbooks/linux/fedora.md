@@ -305,9 +305,11 @@ Install essential extensions:
 - [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
 - [Guillotine](https://extensions.gnome.org/extension/3981/guillotine/)
     - `cp ~/projects/environment/runbooks/linux/fedora/.config/guillotine.json ~/.config/`
+- [Primary Input on LockScreen](https://extensions.gnome.org/extension/4727/primary-input-on-lockscreen/)
 
 Install optional extensions:
 
+- [Hide Keyboard Layout](https://extensions.gnome.org/extension/2848/hide-keyboard-layout/)
 - [autohide-battery](https://extensions.gnome.org/extension/595/autohide-battery/) (removes battery icon when on AC power)
 - [bing-wallpaper-changer](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
 - [block-caribou](https://extensions.gnome.org/extension/1326/block-caribou/) (blocks on-screen keyboard)
