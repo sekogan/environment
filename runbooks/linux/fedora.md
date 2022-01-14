@@ -176,25 +176,31 @@ code environment
 ```
 
 
-## Yandex Disk
-
-Download and install RPM package (https://disk.yandex.ru/download#pc). It will add yandex disk repository automatically.
-
-Then run:
+## OneDrive
 
 ```
-yandex-disk setup
+sudo install onedrive
+mkdir -p ~/.config/onedrive
+vi ~/.config/onedrive/sync_list
 ```
 
-Enter:
+Paste:
 
-- username = skogan
-- password - open Yandex Key and get one time password.
+```
+/secrets
+```
+
+```
+onedrive --synchronize --resync
+systemctl --user enable onedrive
+systemctl --user start onedrive
+journalctl --user-unit=onedrive -f
+```
 
 
 ## KeePass
 
-Start KeePassXC. Open ~/Yandex.Disk/Documents/kogan_secrets_v5.kdbx.
+Start KeePassXC. Open ~/OneDrive/secrets/kogan_secrets_v9.kdbx.
 
 
 ## Github access
