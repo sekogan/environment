@@ -179,7 +179,7 @@ code environment
 ## OneDrive
 
 ```
-sudo install onedrive
+sudo dnf install onedrive
 mkdir -p ~/.config/onedrive
 vi ~/.config/onedrive/sync_list
 ```
