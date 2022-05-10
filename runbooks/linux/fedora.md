@@ -181,13 +181,7 @@ code environment
 ```
 sudo dnf install onedrive
 mkdir -p ~/.config/onedrive
-vi ~/.config/onedrive/sync_list
-```
-
-Paste:
-
-```
-/secrets
+echo /secrets >~/.config/onedrive/sync_list
 ```
 
 ```
