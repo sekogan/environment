@@ -121,7 +121,7 @@ Install Gnome Tweaks (in Software).
 
 - Appearance -> Themes -> Applications -> Adwaita-dark
 - Keyboard & Mouse -> Additional Layout Options
-    - Switching to another layout -> Caps Lock
+    - Switching to another layout -> Caps Lock to first layout; Shift+Caps Lock to last layout
     - Key to choose the 3rd level -> disable Right Alt
 - Top Bar
     - Activities Overview Hot Corner -> Off
@@ -301,6 +301,7 @@ Install essential extensions:
     - open settings and disable everything except "Show Caffeine in top panel"
 - [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
     - open settings and enter email
+- [Hide Keyboard Layout](https://extensions.gnome.org/extension/2848/hide-keyboard-layout/)
 - [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
 - [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
 - [Guillotine](https://extensions.gnome.org/extension/3981/guillotine/)
@@ -309,7 +310,6 @@ Install essential extensions:
 
 Install optional extensions:
 
-- [Hide Keyboard Layout](https://extensions.gnome.org/extension/2848/hide-keyboard-layout/)
 - [autohide-battery](https://extensions.gnome.org/extension/595/autohide-battery/) (removes battery icon when on AC power)
 - [bing-wallpaper-changer](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
 - [block-caribou](https://extensions.gnome.org/extension/1326/block-caribou/) (blocks on-screen keyboard)
