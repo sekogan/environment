@@ -59,12 +59,10 @@ Add to settings.json:
         "editor.formatOnSave": true
     },
     "python.analysis.memory.keepLibraryAst": true,
-    "python.formatting.blackPath": "C:\\Python38\\Scripts\\black.exe",
     "python.formatting.provider": "black",
     "python.jediEnabled": false,
     "python.languageServer": "Pylance",
     "python.linting.mypyEnabled": true,
-    "python.linting.mypyPath": "C:/Python38/Scripts/mypy.exe",
     "python.linting.pycodestyleEnabled": false,
 
     // Javascript
