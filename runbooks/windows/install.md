@@ -1,9 +1,26 @@
 # Windows Environment
 
-## System
+## Taskbar
 
-Set `CapsLock` as language switching key:
+Go to taskbar settings and turn off Cortana and so on.
 
-- Install AutoHotKey.
-- Change language switching key to `Ctrl+Shift`.
-- Copy `.\hotkeys` to tools directory. Run `install.cmd`.
+Turn on autohiding.
+
+Install [ButteryTaskbar](https://github.com/CrypticButter/ButteryTaskbar).
+
+
+## Language and regional settings
+
+Open Windows Settings.
+
+Go to Time and Language -> Language -> Keyboard -> Input language hot keys
+
+Set:
+
+- To English: Left Alt+Shift+1
+- To Russian: Left Alt+Shift+2
+
+Go to Time and Language -> Language -> Administrative language settings.
+
+Make sure the system locale is correct, then press "Copy settings" and copy current settings everywhere including login screen.
+
