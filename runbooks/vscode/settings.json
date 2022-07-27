@@ -1,66 +1,69 @@
 {
-    "debug.console.fontSize": 20,
-    "editor.accessibilitySupport": "off",
-    "editor.autoClosingBrackets": "never",
-    "editor.autoClosingDelete": "never",
-    "editor.autoClosingOvertype": "never",
-    "editor.autoClosingQuotes": "never",
-    "editor.codeActionsOnSave": {},
-    "editor.dragAndDrop": false,
-    "editor.fontSize": 20,
-    "editor.minimap.renderCharacters": false,
-    "editor.renderWhitespace": "boundary",
-    "editor.rulers": [80, 100],
-    "editor.suggest.localityBonus": true,
-    "editor.quickSuggestions": {
-      "other": "off",
-      "comments": "off",
-      "strings": "off"
-    },
-    "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 120,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "git.enableSmartCommit": true,
-    "terminal.integrated.fontSize": 20,
-    "window.menuBarVisibility": "toggle",
-    "window.titleBarStyle": "custom",
-    "workbench.colorTheme": "Horla",
-    "workbench.editor.closeOnFileDelete": true,
-    "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.showTabs": false,
-    "workbench.iconTheme": "vscode-great-icons",
+  "debug.console.fontSize": 20,
+  "editor.accessibilitySupport": "off",
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingDelete": "never",
+  "editor.autoClosingOvertype": "never",
+  "editor.autoClosingQuotes": "never",
+  "editor.codeActionsOnSave": {},
+  "editor.dragAndDrop": false,
+  "editor.fontSize": 20,
+  "editor.minimap.renderCharacters": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [80, 100],
+  "editor.suggest.localityBonus": true,
+  "editor.quickSuggestions": {
+    "other": "off",
+    "comments": "off",
+    "strings": "off"
+  },
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 120,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "git.enableSmartCommit": true,
+  "terminal.integrated.fontSize": 20,
+  "window.menuBarVisibility": "toggle",
+  "window.openFilesInNewWindow": "on",
+  "window.openFoldersInNewWindow": "on",
+  "window.titleBarStyle": "custom",
+  "workbench.colorTheme": "Horla",
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.showTabs": false,
+  "workbench.iconTheme": "vscode-great-icons",
+  "workbench.startupEditor": "none",
 
-    // Extensions
-    "markdown.preview.fontSize": 20,
-    "prettier.requireConfig": true,
-    "rewrap.reformat": true,
-    "rewrap.wrappingColumn": 100,
+  // Extensions
+  "markdown.preview.fontSize": 20,
+  "prettier.requireConfig": true,
+  "rewrap.reformat": true,
+  "rewrap.wrappingColumn": 100,
 
-    // Python
-    "[python]": {
-      "editor.formatOnSave": true,
-      "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-      }
-    },
-    "python.formatting.provider": "black",
-    "python.languageServer": "Pylance",
-    "python.linting.mypyEnabled": true,
-    "python.linting.pycodestyleEnabled": false,
-
-    // Javascript
-    "[javascript]": {
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascriptreact]": {
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // Python
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
     }
+  },
+  "python.formatting.provider": "black",
+  "python.languageServer": "Pylance",
+  "python.linting.mypyEnabled": true,
+  "python.linting.pycodestyleEnabled": false,
+
+  // Javascript
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
+}
