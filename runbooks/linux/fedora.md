@@ -2,7 +2,6 @@
 
 Last tested on Fedora 33.
 
-
 ## Installation
 
 Load Live CD and select "Try Fedora".
@@ -15,14 +14,14 @@ Open terminal.
 
 Optionally delete previous linux bootloader:
 
-```
+```bash
 sudo efibootmgr -v
 sudo efibootmgr -b xxxx -B
 ```
 
 Optionally remove/shrink partitions:
 
-```
+```bash
 sudo dnf install gparted
 sudo gparted
 ```
@@ -31,39 +30,35 @@ Run "Install to Hard drive".
 
 Select custom partitioning, change "LVM" to "Standard Partition" and click "Click here to create them automatically".
 
-
 ## Basic Terminal
 
 Open Terminal -> Preferences. Set:
 
 - General
-    - Enable the menu accelerator = off
+  - Enable the menu accelerator = off
 - Profiles -> Unnamed
-    - Text
-        - Custom Font -> size = 14 (15 on laptop)
-    - Colors
-        - Use transparent background ~ 15%
-
+  - Text
+    - Custom Font -> size = 14 (15 on laptop)
+  - Colors
+    - Use transparent background ~ 15%
 
 ## System update
 
-```
+```bash
 sudo dnf update --refresh
 ```
-
 
 ## Host name
 
 Set host name:
 
-```
+```bash
 sudo hostnamectl set-hostname NEW_HOSTNAME
 ```
 
-
 ## Run Ansible playbooks
 
-```
+```bash
 sudo dnf install ansible
 
 ansible-pull -U https://github.com/sekogan/environment.git -K
@@ -72,65 +67,62 @@ ansible-pull -U https://github.com/sekogan/environment.git -K
 ansible-playbook local.yml -K
 ```
 
-
 ## Advanced Terminal
 
 - Profiles -> default -> General:
-    - font = Monospace Regular 14 (15 on laptop)
-    - copy on selection = on
+  - font = Monospace Regular 14 (15 on laptop)
+  - copy on selection = on
 
 Run `ibus-setup`, go to Emoji and delete keyboard shortcuts.
-
 
 ## Basic Gnome
 
 Open settings:
 
 - Privacy
-    - File History & Trash
-        - Automatically Delete Trash Content = on
-        - Automatically Delete Temporary Files = on
-    - Screen Lock
-        - Show Notifications = off
+  - File History & Trash
+    - Automatically Delete Trash Content = on
+    - Automatically Delete Temporary Files = on
+  - Screen Lock
+    - Show Notifications = off
 - Power
-    - Automatic suspend = on
-        - Plugged In = on
-    - Power Button Action = suspend
+  - Automatic suspend = on
+    - Plugged In = on
+  - Power Button Action = suspend
 - Displays -> Night Light
-    - Schedule = Manual
-    - Times = 22:00 - 06:00
-    - Color Temperature = 1/3
+  - Schedule = Manual
+  - Times = 22:00 - 06:00
+  - Color Temperature = 1/3
 - Mouse & Touchpad
-    - Touchpad Speed = 75%
-    - Tap to Click = on
+  - Touchpad Speed = 75%
+  - Tap to Click = on
 - Keyboard Shortcuts
-    - Settings = Super + I
-    - Hide all normal windows = Super + D
-    - Home Folder = Super + E
-    - Switch windows = Alt + Tab
-    - Switch applications = Super + Tab
-    - Add
-        - Launch terminal
-        - gnome-terminal (or terminator)
-        - Ctrl+Alt+T
+  - Settings = Super + I
+  - Hide all normal windows = Super + D
+  - Home Folder = Super + E
+  - Switch windows = Alt + Tab
+  - Switch applications = Super + Tab
+  - Add
+    - Launch terminal
+    - gnome-terminal (or terminator)
+    - Ctrl+Alt+T
 - Region & Language
-    - Formats -> select Russian
-    - Input sources -> Add Russian
+  - Formats -> select Russian
+  - Input sources -> Add Russian
 
 Install Gnome Tweaks (in Software).
 
 - Appearance -> Themes -> Applications -> Adwaita-dark
 - Keyboard & Mouse -> Additional Layout Options
-    - Switching to another layout -> Caps Lock to first layout; Shift+Caps Lock to last layout
-    - Key to choose the 3rd level -> disable Right Alt
+  - Switching to another layout -> Caps Lock to first layout; Shift+Caps Lock to last layout
+  - Key to choose the 3rd level -> disable Right Alt
 - Top Bar
-    - Activities Overview Hot Corner -> Off
-    - Week Numbers -> On
+  - Activities Overview Hot Corner -> Off
+  - Week Numbers -> On
 
 Open Preferences in file manager:
 
 - Sort folder before files = on
-
 
 ## Basic Visual Studio Code
 
@@ -138,64 +130,57 @@ Download and install Visual Studio Code.
 
 Setup it using [this manual](../vscode.md).
 
-
 ## Firefox
 
 Open Preferences in Firefox:
 
 - General
-    - Restore previous session = on
-    - Default zoom = 120% (on HiDPI screen only)
+  - Restore previous session = on
+  - Default zoom = 120% (on HiDPI screen only)
 - Home
-    - Homepage and new windows = Firefox Home (Default)
+  - Homepage and new windows = Firefox Home (Default)
 - Search
-    - Default search engine = Google
+  - Default search engine = Google
 - Privacy & Security
-    - Ask to save logins and passwords = off
-
+  - Ask to save logins and passwords = off
 
 ## Git
 
-
 Configure git:
 
-```
+```bash
 git config --global user.name "Sergey Kogan"
 git config --global user.email sekogan@gmail.com
 git config --global credential.helper libsecret
 ```
 
+## Environment Repo
 
-# Environment Repo
-
-```
+```bash
 mkdir ~/projects
 cd ~/projects
 git clone https://github.com/sekogan/environment.git
 code environment
 ```
 
-
 ## OneDrive
 
-```
+```bash
 sudo dnf install onedrive
 mkdir -p ~/.config/onedrive
 echo /secrets >~/.config/onedrive/sync_list
 ```
 
-```
+```bash
 onedrive --synchronize --resync
 systemctl --user enable onedrive
 systemctl --user start onedrive
 journalctl --user-unit=onedrive -f
 ```
 
-
 ## KeePass
 
 Start KeePassXC. Open ~/OneDrive/secrets/kogan_secrets_v9.kdbx.
-
 
 ## Github access
 
@@ -203,8 +188,7 @@ Login into github.com in the browser.
 Create a new PAT on GitHub (Avatar -> Settings -> Developer settings -> Personal access tokens
 -> Generate new token).
 
-
-```
+```bash
 cd ~/projects/environment
 git push
 user: sekogan
@@ -213,21 +197,19 @@ password: PAT (use special button in Github UI to copy)
 
 Test that git doesn't ask password anymore:
 
-```
+```bash
 git push
 ```
 
 Open this file and fix encountered mishaps.
 
-
 ## Package managers
 
 Optionally enable RPM Fusion repos:
 
-```
+```bash
 sudo dnf config-manager --enable rpmfusion-nonfree-nvidia-driver
 ```
-
 
 ## Install essential packages
 
@@ -235,34 +217,32 @@ Open Telegram and enable Night mode. Then go to Settings:
 
 - Interface scale = 250% (on laptop only)
 - Notifications
-    - Include muted chats in unread count = off
+  - Include muted chats in unread count = off
 - Advanced
-    - Launch Telegram = on
-    - Launch minimized = on
+  - Launch Telegram = on
+  - Launch minimized = on
 
 Sometimes telegram doesn't start. Run Tweaks and add it to startup applications.
 
 Open VLC, go to Preferences:
 
 - Interface:
-    - Show systray icon = off
-    - Pause on the last frame = on
+  - Show systray icon = off
+  - Pause on the last frame = on
 - Hotkeys:
-    - Short backward jump = Left
-    - Short forward jump = Right
-    - Cycle subtitle track = s
-    - Cycle audio track = a
-
+  - Short backward jump = Left
+  - Short forward jump = Right
+  - Cycle subtitle track = s
+  - Cycle audio track = a
 
 ## Google Chrome
 
 Open Settings:
 
 - Passwords
-    - Offer to safe = off
+  - Offer to safe = off
 - Appearance
-    - Page zoom = 125% (on HiDPI screen only)
-
+  - Page zoom = 125% (on HiDPI screen only)
 
 ## Advanced Gnome
 
@@ -276,7 +256,7 @@ Optionally add online accounts:
 
 Remove `Ctrl+Alt+Up` and `Ctrl+Alt+Down` shortcuts:
 
-```
+```bash
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super>Page_Up']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Super>Page_Down']"
 ```
@@ -284,28 +264,30 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Supe
 Install helpers that allows to install extensions in the browser:
 
 - Native connector:
-  ```
+
+  ```bash
   sudo dnf install chrome-gnome-shell
   ```
+
 - [Firefox extension](https://addons.mozilla.org/en/firefox/addon/gnome-shell-integration/).
 
 Install Extensions app:
 
-```
+```bash
 sudo dnf install gnome-extensions-app
 ```
 
 Install essential extensions:
 
 - [caffeine](https://extensions.gnome.org/extension/517/caffeine/)
-    - open settings and disable everything except "Show Caffeine in top panel"
+  - open settings and disable everything except "Show Caffeine in top panel"
 - [gravatar](https://extensions.gnome.org/extension/1015/gravatar/)
-    - open settings and enter email
+  - open settings and enter email
 - [Hide Keyboard Layout](https://extensions.gnome.org/extension/2848/hide-keyboard-layout/)
 - [hide-activities-button](https://extensions.gnome.org/extension/744/hide-activities-button/)
 - [remove-alttab-delay](https://extensions.gnome.org/extension/1403/remove-alttab-delay/)
 - [Guillotine](https://extensions.gnome.org/extension/3981/guillotine/)
-    - `cp ~/projects/environment/runbooks/linux/fedora/.config/guillotine.json ~/.config/`
+  - `cp ~/projects/environment/runbooks/linux/fedora/.config/guillotine.json ~/.config/`
 - [Primary Input on LockScreen](https://extensions.gnome.org/extension/4727/primary-input-on-lockscreen/)
 
 Install optional extensions:
@@ -325,61 +307,56 @@ Install optional extensions:
 
 Remove unwanted applications from Dock.
 
-
 ## System
 
 Reduce swap usage:
 
-```
+```bash
 sudo vi /etc/sysctl.d/99-swappiness.conf
 ```
 
-```
+```bash
 vm.swappiness=1
 ```
 
 Reboot and check with `cat /proc/sys/vm/swappiness`.
 
-
 Turn off automatic core dumps:
 
-```
+```bash
 sudo cp ~/projects/environment/runbooks/linux/etc/50-coredump.conf /etc/sysctl.d/
 sudo sysctl -p /etc/sysctl.d/50-coredump.conf
 sudo rm /var/lib/systemd/coredump/*
 ```
 
-
 ## Monitoring tools
 
 Install lm-sensors (required by freon):
 
-```
+```bash
 sudo dnf install lm_sensors
 sudo sensors-detect --auto
 ```
 
 Install [freon](https://extensions.gnome.org/extension/841/freon/).
 
-
 TODO: install GPU monitoring tools: nvtop and intel gpu tools.
-
 
 ## Undervolting
 
 Install undervolting tool:
 
-```
+```bash
 sudo pip3 install undervolt
 ```
 
 Create file:
 
-```
+```bash
 sudo vi /etc/systemd/system/undervolt.service
 ```
 
-```
+```ini
 [Unit]
 Description=undervolt
 After=suspend.target
@@ -399,19 +376,18 @@ WantedBy=hybrid-sleep.target
 
 Check that the script works and enable service:
 
-```
+```bash
 sudo systemctl enable undervolt
 sudo systemctl start undervolt
 ```
 
-
 ## Fan control on Dell laptop
 
-NOTE: not tested in Fedora!
+NOTE: not tested on Fedora!
 
 Disable fan controller in BIOS (Dell laptops only):
 
-```
+```bash
 cd ~/projects
 git clone https://github.com/TomFreudenberg/dell-bios-fan-control.git
 cd dell-bios-fan-control
@@ -423,11 +399,11 @@ sudo cp dell-bios-fan-control /usr/local/bin
 
 Create file:
 
-```
+```bash
 sudo vi /etc/systemd/system/bios_fan_control.service
 ```
 
-```
+```bash
 [Unit]
 Description=undervolt
 After=suspend.target
@@ -448,24 +424,24 @@ WantedBy=hybrid-sleep.target
 
 Check that the script works and enable service:
 
-```
+```bash
 sudo systemctl start bios_fan_control
 sudo systemctl enable bios_fan_control
 ```
 
 Install and start i8k fan control (Dell laptops only):
 
-```
+```bash
 sudo dnf install i8kutils
 ```
 
 Edit configuration file:
 
-```
+```bash
 sudo vi /etc/i8kmon.confi8kmon
 ```
 
-```
+```bash
 set config(poll_ac)     0
 set config(poll_fans)   0
 set config(0)   {{0 0}  -1  55  -1  55}
@@ -477,7 +453,7 @@ set config(4)   {{2 2}  65 128  65 128}
 
 Patch i8kmon to fix [sound issue](https://github.com/vitorafsr/i8kutils/issues/15).
 
-```
+```bash
 cd ~/projects
 git clone https://github.com/sekogan/i8kutils.git
 sudo mv /usr/bin/i8kmon /usr/bin/i8kmon.original
@@ -486,13 +462,13 @@ sudo cp ~/projects/i8kutils/i8kmon /usr/bin/
 
 Test that it works:
 
-```
+```bash
 sudo i8kmon -v
 ```
 
 Enable i8kmon service:
 
-```
+```bash
 sudo systemctl enable i8kmon
 sudo systemctl start i8kmon
 ```
@@ -503,78 +479,73 @@ Not sure it helped, but done this so far:
 
 `/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf`
 
-```
+```ini
 [connection]
 wifi.powersave = 2
 ```
 
 `/etc/modprobe.d/iwlwifi.conf`
 
-```
+```text
 options iwlwifi 11n_disable=8
 options iwlmvm power_scheme=1
 ```
-
 
 ## Screen grabbers
 
 Start and configure flameshot (`flameshot config`):
 
 - Configuration
-    - General
-        - Launch at startup = off
-        - Close after capture = on
+  - General
+    - Launch at startup = off
+    - Close after capture = on
 
 Configure keyboard shortcuts:
 
 - Go to Settings -> Keyboard Shortcuts.
 - Remove Ctrl + Print shortcut.
 - Add new shortcut:
-    - Name: Make screenshot with flameshot
-    - Command: flameshot gui
-    - Shortcut: Ctrl + Print
-
+  - Name: Make screenshot with flameshot
+  - Command: flameshot gui
+  - Shortcut: Ctrl + Print
 
 Start peek, go to Preferences and enable "Open file manager after saving".
 
 - Go to Settings -> Keyboard Shortcuts.
 - Remove Ctrl + Shift + Print shortcut.
 - Add new shortcut:
-    - Name: Record screen with peek
-    - Command: peek
-    - Shortcut: Ctrl + Shift + Print
-
+  - Name: Record screen with peek
+  - Command: peek
+  - Shortcut: Ctrl + Shift + Print
 
 ## CA certificates
 
 Install CA certificates to the system storage:
 
-```
-sudo cp ~/projects/environment/certificates/kaspersky_ca/* /usr/share/pki/ca-trust-source/anchors/
+```bash
+sudo cp ~/projects/environment/certificates/foo_ca/* /usr/share/pki/ca-trust-source/anchors/
 sudo cp ~/projects/environment/certificates/personal_ca/ca_certificate.pem /usr/share/pki/ca-trust-source/anchors/sergei_kogan_personal_ca.pem
 sudo update-ca-trust
 ```
-
 
 ## Enable weak cryptography (temporarily)
 
 Enable weak cryptography to fix openconnect not allowing to use eToken.
 
-```
+```bash
 sudo vi /etc/crypto-policies/back-ends/gnutls.config
 ```
 
-```
+```ini
 [overrides]
 # insecure-hash = SHA1
 ```
-
 
 ## VPN
 
 Install eToken driver:
 
-```
+```bash
 pushd ~/Yandex.Disk/dist/fedora/vpn/safenet
 sudo rpm --import RPM-GPG-KEY-SafenetAuthenticationClient
 sudo rpm -Uvh SafenetAuthenticationClient-10.7.77-1.x86_64.rpm
@@ -585,14 +556,14 @@ echo "module: /usr/lib64/libeTPkcs11.so" | sudo tee /etc/pkcs11/modules/eToken.m
 
 Stop SACSrv (allegedly it starts SACMonitor which is a CPU hog):
 
-```
+```bash
 sudo systemctl stop SACSrv.service
 sudo systemctl disable SACSrv.service
 ```
 
 Try to connect to VPN manually. Find certificate URL:
 
-```
+```bash
 # p11tool --list-token-urls
 pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan
 
@@ -603,28 +574,27 @@ pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%
 
 Use it to connect:
 
-```
-sudo openconnect --no-proxy --certificate 'pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergey%20Kogan;id=%5F%14%1D%3D%22%26%CE%68;object=le-SpecialSmartcardUserwithEncryp-63588;type=cert' --script /etc/vpnc/vpnc-script https://cvpn.kaspersky.com
+```bash
+sudo openconnect --no-proxy --certificate 'pkcs11:model=eToken;manufacturer=SafeNet%2C%20Inc.;serial=01db911b;token=Sergei%20Kogan;id=%5F%14%1D%3D%22%26%CE%68;object=le-SpecialSmartcardUserwithEncryp-63588;type=cert' --script /etc/vpnc/vpnc-script https://server
 ```
 
 Add VPN connection to Network Manager:
 
-```
-sudo cp ~/projects/environment/runbooks/linux/fedora/vpn/KL.nmconnection /etc/NetworkManager/system-connections/
+```bash
+sudo cp ~/projects/environment/runbooks/linux/fedora/vpn/Foo.nmconnection /etc/NetworkManager/system-connections/
 cd /etc/NetworkManager/system-connections
-sudo chown root:root KL.nmconnection
-sudo chmod go-rw KL.nmconnection
+sudo chown root:root Foo.nmconnection
+sudo chmod go-rw Foo.nmconnection
 sudo systemctl restart NetworkManager.service
 ```
 
 VPN connection should now be visible in Settings -> Network.
 
-
 ## Printer
 
 Go to Canon website and download driver for linux (google "LPB613Cdw driver").
 
-```
+```bash
 tar xzvf downloaded_file.tgz
 cd linux-UFRII-drv-v520-uken
 sudo ./install.sh

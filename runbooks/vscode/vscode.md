@@ -6,7 +6,7 @@ Open settings (Ctrl+,) and search "font size". Set font size to 20 (18 on deskto
 
 Install extensions (via Ctrl+P):
 
-```
+```bash
 ext install Horla.horla-light-theme
 ext install emmanuelbeziat.vscode-great-icons
 
