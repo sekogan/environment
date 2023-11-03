@@ -16,6 +16,8 @@ ext install mechatroner.rainbow-csv
 ext install ms-python.vscode-pylance
 ext install esbenp.prettier-vscode
 
+ext install markdownlint
+
 ext install waderyan.gitblame
 ext install donjayamanne.githistory
 
