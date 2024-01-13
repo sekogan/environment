@@ -128,6 +128,12 @@ Open Preferences in file manager:
 
 Download and install Visual Studio Code.
 
+Add the following to `.bashrc`, if vscode is installed using flatpack:
+
+```bash
+alias code='flatpak run com.visualstudio.code'
+```
+
 Setup it using [this manual](../vscode.md).
 
 ## Firefox
